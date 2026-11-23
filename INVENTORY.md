@@ -1,6 +1,6 @@
 # 资产清单（自动生成）
 
-生成时间：2026-11-23T00:26:23.848Z
+生成时间：2026-11-23T04:49:16.345Z
 
 来源：手机 `io.astrbot.android`（AstrBot 4.29.3 + NapCat 4.18.41）与电脑 DSH 桌面版，
 通过 adb + 手机上的 `astrbot_plugin_execrelay` 只读取回，未改动手机上的任何状态。
@@ -39,10 +39,10 @@
 | `scripts/apply-persona.py` | 1 | 2953 |
 | `scripts/check-secrets.sh` | 1 | 2251 |
 | `scripts/deploy-dsh-assets.sh` | 1 | 3075 |
-| `scripts/deploy-phone.sh` | 1 | 4649 |
+| `scripts/deploy-phone.sh` | 1 | 4962 |
 | `scripts/push-to-phone.ps1` | 1 | 3567 |
 | `scripts/render_template.py` | 1 | 1109 |
-| `scripts/verify-phone.sh` | 1 | 3473 |
+| `scripts/verify-phone.sh` | 1 | 4057 |
 
 ## 逐文件
 
@@ -178,7 +178,7 @@
 | `scripts/apply-persona.py` | 2953 | `c4b6bdcb9f9aa64f` |
 | `scripts/check-secrets.sh` | 2251 | `4166b28bfa2e7799` |
 | `scripts/deploy-dsh-assets.sh` | 3075 | `a4c5896407be5837` |
-| `scripts/deploy-phone.sh` | 4649 | `f4c3bf3a18f118f1` |
+| `scripts/deploy-phone.sh` | 4962 | `7352bcb2b9accc0b` |
 | `scripts/push-to-phone.ps1` | 3567 | `a825e519bb8483ee` |
 | `scripts/render_template.py` | 1109 | `d55b44a3f0c3b2eb` |
-| `scripts/verify-phone.sh` | 3473 | `baa1a8b80d60fcd7` |
+| `scripts/verify-phone.sh` | 4057 | `91a0a89c97ada9d9` |

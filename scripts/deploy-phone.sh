@@ -20,7 +20,13 @@ REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 ASTRBOT_HOME="${ASTRBOT_HOME:-/persistent/astrbot}"
 NAPCAT_HOME="${NAPCAT_HOME:-/persistent/napcat}"
 DATA_DIR="$ASTRBOT_HOME/data"
-PY="${ASTRBOT_HOME}/.venv/bin/python"
+# AstrBot 的 python：优先 ASTRBOT_PY，其次 App 自带的 venv，最后 profile 内的 .venv
+PY="${ASTRBOT_PY:-}"
+if [[ -z "$PY" ]]; then
+  for cand in /opt/astrbot-venv/bin/python "$ASTRBOT_HOME/.venv/bin/python"; do
+    [[ -x "$cand" ]] && { PY="$cand"; break; }
+  done
+fi
 FORCE="${FORCE:-0}"
 DRY_RUN=0
 [[ "${1:-}" == "--dry-run" ]] && DRY_RUN=1
@@ -47,7 +53,7 @@ else
 fi
 
 [[ -d "$DATA_DIR" ]] || die "没有 $DATA_DIR：先在 App 里把 AstrBot 启动一次再跑本脚本"
-[[ -x "$PY" ]]       || die "没有 $PY：AstrBot 的 venv 还没建好"
+[[ -n "$PY" && -x "$PY" ]] || die "找不到 AstrBot 的 python：设 ASTRBOT_PY 指向它（App 里一般是 /opt/astrbot-venv/bin/python）"
 
 log "REPO_ROOT=$REPO_ROOT"
 log "ASTRBOT_HOME=$ASTRBOT_HOME  NAPCAT_HOME=$NAPCAT_HOME  FORCE=$FORCE  DRY_RUN=$DRY_RUN"

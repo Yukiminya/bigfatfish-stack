@@ -8,7 +8,14 @@ REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 ASTRBOT_HOME="${ASTRBOT_HOME:-/persistent/astrbot}"
 NAPCAT_HOME="${NAPCAT_HOME:-/persistent/napcat}"
 DATA_DIR="$ASTRBOT_HOME/data"
-PY="${ASTRBOT_HOME}/.venv/bin/python"
+# AstrBot 的 python：优先 ASTRBOT_PY，其次 App 自带的 venv，最后 profile 内的 .venv
+PY="${ASTRBOT_PY:-}"
+if [[ -z "$PY" ]]; then
+  for cand in /opt/astrbot-venv/bin/python "$ASTRBOT_HOME/.venv/bin/python"; do
+    [[ -x "$cand" ]] && { PY="$cand"; break; }
+  done
+fi
+[[ -n "$PY" && -x "$PY" ]] || { echo "找不到 AstrBot 的 python：设 ASTRBOT_PY 指向它" >&2; exit 2; }
 PASS=0; FAIL=0
 ok()   { PASS=$((PASS+1)); printf '  PASS  %s\n' "$*"; }
 bad()  { FAIL=$((FAIL+1)); printf '  FAIL  %s\n' "$*"; }
@@ -18,6 +25,16 @@ skip() { printf '  SKIP  %s\n' "$*"; }
 WEB_PORT="${ASTRBOT_WEB_PORT:-6185}"
 WS_PORT="${ASTRBOT_WS_PORT:-6199}"
 
+# 端口探测：容器里没有 ss/lsof，netstat 在 proot 下读不到 /proc/net，只能用 socket
+port_open() {
+  "$PY" - "$1" <<'PY'
+import socket, sys
+port = int(sys.argv[1])
+s = socket.socket(); s.settimeout(2)
+sys.exit(0 if s.connect_ex(("127.0.0.1", port)) == 0 else 1)
+PY
+}
+
 echo "== 1. 进程与端口 =="
 if curl -fsS -m 5 -o /dev/null "http://127.0.0.1:${WEB_PORT}/" 2>/dev/null; then
   ok "AstrBot WebUI 在 ${WEB_PORT} 上有响应"
@@ -25,7 +42,7 @@ else
   bad "AstrBot WebUI ${WEB_PORT} 不通（没启动 / 端口不对）"
 fi
 
-if (ss -lnt 2>/dev/null || netstat -lnt 2>/dev/null) | grep -q ":${WS_PORT}\b"; then
+if port_open "$WS_PORT"; then
   ok "反向 WS 服务在 ${WS_PORT} 监听（NapCat 要连它）"
 else
   bad "反向 WS ${WS_PORT} 没在监听：AstrBot 还没起，或 platform 配置没生效"
