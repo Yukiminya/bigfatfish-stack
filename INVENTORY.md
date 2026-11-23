@@ -1,6 +1,6 @@
 # 资产清单（自动生成）
 
-生成时间：2026-11-23T06:05:13.688Z
+生成时间：2026-11-23T06:18:47.003Z
 
 来源：手机 `io.astrbot.android`（AstrBot 4.29.3 + NapCat 4.18.41）与电脑 DSH 桌面版，
 通过 adb + 手机上的 `astrbot_plugin_execrelay` 只读取回，未改动手机上的任何状态。
@@ -13,10 +13,10 @@
 | `.gitattributes` | 1 | 316 |
 | `.gitignore` | 1 | 178 |
 | `LICENSE` | 1 | 1086 |
-| `MODIFICATIONS.md` | 1 | 6079 |
+| `MODIFICATIONS.md` | 1 | 6663 |
 | `README.md` | 1 | 4993 |
 | `astrbot/cmd_config.json.example` | 1 | 8476 |
-| `astrbot/persona` | 6 | 17992 |
+| `astrbot/persona` | 6 | 17827 |
 | `astrbot/plugin-configs` | 6 | 2342 |
 | `astrbot/plugins` | 43 | 313677 |
 | `astrbot/skills.json` | 1 | 269 |
@@ -58,10 +58,10 @@
 | `astrbot/cmd_config.json.example` | 8476 | `8b81abc0e57e27a7` |
 | `astrbot/persona/bot-blocklist.md` | 1644 | `919d16a07f137dd1` |
 | `astrbot/persona/dafeiyu.txt` | 3387 | `3f7c863fbbf765f8` |
-| `astrbot/persona/default.txt` | 5595 | `2b81887b08b18a30` |
+| `astrbot/persona/default.txt` | 5309 | `08566dcf147ea003` |
 | `astrbot/persona/desktop-qq-persona.txt` | 3023 | `659896163f999288` |
 | `astrbot/persona/memory-digest.md` | 2769 | `aaae702cdef88276` |
-| `astrbot/persona/README.md` | 1574 | `dc8ba5b0672fcbe1` |
+| `astrbot/persona/README.md` | 1695 | `59a8fba5576d933e` |
 | `astrbot/plugin-configs/astrbot_plugin_android_hands_config.json` | 719 | `cdb8c83a3923a76d` |
 | `astrbot/plugin-configs/astrbot_plugin_coo_memory_config.json` | 118 | `ed32a6d035191dd0` |
 | `astrbot/plugin-configs/astrbot_plugin_feiyu_voice_config.json` | 237 | `5d7927e1a6d2314d` |
@@ -168,7 +168,7 @@
 | `dsha/skills/video-watch-plus/verification/record-2026-09-30.md` | 6793 | `6a512e0260e984c6` |
 | `legacy-pc/qq-access-config.json.example` | 7333 | `1aa2fa9a20c9d35c` |
 | `LICENSE` | 1086 | `4f55975e122712e5` |
-| `MODIFICATIONS.md` | 6079 | `6b87d57e252a5655` |
+| `MODIFICATIONS.md` | 6663 | `78906beaa50f48f9` |
 | `napcat/config/pc/napcat_3325646322.json.example` | 193 | `854bd7ce550e3880` |
 | `napcat/config/pc/napcat_protocol_3325646322.json.example` | 120 | `cce316df4649e0fb` |
 | `napcat/config/pc/onebot11_3325646322.json.example` | 950 | `a10f5558e689dcc3` |
