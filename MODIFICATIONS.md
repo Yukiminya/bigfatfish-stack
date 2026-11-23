@@ -8,7 +8,7 @@
 
 | 插件 | 作者标记 | 说明 |
 |---|---|---|
-| `astrbot_plugin_android_hands` v3.7.0 | Codex | 读屏点屏 + 自己刷 B 站/小黑盒/小红书 |
+| `astrbot_plugin_android_hands` v3.8.0 | Codex | 读屏点屏 + 自己刷 B 站/小黑盒/小红书；游戏画面用视觉模型看图后点/拖/长按 |
 | `astrbot_plugin_android_observer` 1.0.0 | astrbot_android_manager | 连接健康（只读） |
 | `astrbot_plugin_coo_memory` v1.0.4 | phone-hands | 与电脑桌宠 Coo 共享记忆 |
 | `astrbot_plugin_execrelay` v1.0.0 | dev | 文件触发的执行中继（调试用） |

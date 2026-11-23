@@ -123,5 +123,35 @@
     "description": "语音消息：转写模型名，例如 FunAudioLLM/SenseVoiceSmall。",
     "type": "string",
     "default": "FunAudioLLM/SenseVoiceSmall"
+  },
+  "vision_enabled": {
+    "description": "看图：是否启用视觉模型（读屏没有文字时用）",
+    "type": "bool",
+    "default": false
+  },
+  "vision_base": {
+    "description": "看图：OpenAI 兼容接口地址",
+    "type": "string",
+    "default": "https://api.siliconflow.cn/v1"
+  },
+  "vision_api_key": {
+    "description": "看图：视觉模型 API Key",
+    "type": "string",
+    "default": ""
+  },
+  "vision_model": {
+    "description": "看图：视觉模型名称",
+    "type": "string",
+    "default": "Qwen/Qwen3-VL-30B-A3B-Instruct"
+  },
+  "vision_max_elements": {
+    "description": "看图：最多返回的可操作区域数量",
+    "type": "int",
+    "default": 40
+  },
+  "vision_timeout": {
+    "description": "看图：视觉请求超时秒数",
+    "type": "int",
+    "default": 30
   }
 }

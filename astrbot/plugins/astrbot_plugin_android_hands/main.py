@@ -1,5 +1,6 @@
 
 
+import tempfile
 import asyncio
 import json
 import os
@@ -26,6 +27,7 @@ if _HERE not in sys.path:
 from hands_watch import AutoWatcher, WatchFlow  # noqa: E402
 from hands_roam import Roamer  # noqa: E402
 from voice_guard import VoiceGuard  # noqa: E402
+from vision_look import VisionClient, VisionError, to_pixels  # noqa: E402
 
 
 def _message_chain(parts: list) -> MessageChain:
@@ -198,7 +200,7 @@ async def _stop_process(
     "astrbot_plugin_android_hands",
     "Codex",
     "在手机本地直接读屏和操作 Android 手机",
-    "v3.7.0",
+    "v3.8.0",
 )
 class AndroidHands(Star):
     def __init__(self, context: Context, config=None):
@@ -213,6 +215,7 @@ class AndroidHands(Star):
         self._roam: Roamer | None = None
         self._roam_task: asyncio.Task | None = None
         self._voice = VoiceGuard(self._config, logger)
+        self._vision = VisionClient(self._config, logger)
         roam = self._load_roam_control()
         control = self._load_control()
         if roam.get("on") and roam.get("umo"):
@@ -450,8 +453,12 @@ class AndroidHands(Star):
         async with _DEVICE_LOCK:
             return await operation(*args)
 
-    async def _tool_text(self, operation: Callable[..., Awaitable[str]], *args) -> str:
+    async def _tool_text(
+        self, operation: Callable[..., Awaitable[str]], *args, serialize: bool = True
+    ) -> str:
         try:
+            if not serialize:
+                return await operation(*args)
             return await self._serialized(operation, *args)
         except PhoneError as exc:
             return str(exc)
@@ -504,7 +511,7 @@ class AndroidHands(Star):
             status = "可点击" if clickable else "不可点击"
             lines.append(f"{number}. {text} | ({x},{y}) | {status}")
         if not entries:
-            lines.append("屏幕上没有可读文字")
+            lines.append("屏幕上没有可读文字（画面可能是游戏或画布绘制，可改用 phone_look 看图）")
         return "\n".join(lines)
 
     async def _tap_point(self, x: int, y: int) -> None:
@@ -575,8 +582,9 @@ class AndroidHands(Star):
         await self._device("input", text)
         return "已输入文字"
 
-    async def _capture(self) -> str:
-        path = os.path.join(self._data_dir(), "screen.png")
+    async def _capture(self, path: str | None = None) -> str:
+        if path is None:
+            path = os.path.join(self._data_dir(), "screen.png")
         try:
             os.remove(path)
         except OSError:
@@ -851,6 +859,116 @@ class AndroidHands(Star):
         Args:
         """
         yield await self._shot_result(event)
+
+    async def _look(self, question: str = "") -> str:
+        if not self._vision.enabled():
+            return (
+                "看图没配置：在插件配置里填 vision_api_key"
+                "（base 默认硅基流动，model 默认 Qwen/Qwen3-VL-30B-A3B-Instruct）"
+            )
+
+        # 各请求使用独立截图，避免释放设备锁后被另一张截图覆盖。
+        with tempfile.TemporaryDirectory(
+            prefix="vision-", dir=os.path.abspath(self._data_dir())
+        ) as directory:
+            image_path = await self._serialized(
+                self._capture, os.path.join(directory, "screen.png")
+            )
+            width, height = await self._serialized(self._display_size)
+            try:
+                result = await self._vision.look(image_path, question, width, height)
+            except VisionError as exc:
+                return str(exc)
+
+        app = result["app"] or "未知"
+        desc = result["desc"] or "未识别画面描述"
+        elements = to_pixels(result["elements"], width, height)
+        if not elements:
+            return (
+                f"画面：{desc}\n"
+                "没认出可点的位置，可以直接用 phone_shot 发给用户看"
+            )
+
+        lines = [f"当前应用：{app}（看图）", f"画面：{desc}"]
+        for index, element in enumerate(elements, start=1):
+            name = element["name"] or "未命名区域"
+            x, y = element["x"], element["y"]
+            kind = element["kind"]
+            action = {"slider": "可拖动", "joystick": "可拖动", "area": "可操作"}.get(
+                kind, "可点击"
+            )
+            if not element["confident"]:
+                action += "（位置待确认）"
+            lines.append(f"{index}. {name} | ({x},{y}) | {action}")
+        lines.append("提示：坐标可直接用于 phone_tap_xy、phone_drag、phone_press")
+        return "\n".join(lines)
+
+    async def _drag(
+        self, x1: int, y1: int, x2: int, y2: int, duration_ms: int = 800
+    ) -> str:
+        if any(type(coordinate) is not int for coordinate in (x1, y1, x2, y2)):
+            raise PhoneError("坐标必须是整数")
+        if type(duration_ms) is not int or not 100 <= duration_ms <= 5000:
+            raise PhoneError("操作时长须为 100～5000 毫秒的整数")
+
+        width, height = await self._display_size()
+        for x, y in ((x1, y1), (x2, y2)):
+            if not (0 <= x < width and 0 <= y < height):
+                raise PhoneError(f"坐标 ({x},{y}) 超出屏幕范围（{width}×{height}）")
+
+        await self._device(
+            "swipe", str(x1), str(y1), str(x2), str(y2), "--duration", str(duration_ms)
+        )
+        return f"已从 ({x1},{y1}) 拖到 ({x2},{y2})，用时 {duration_ms} 毫秒"
+
+    async def _press(self, x: int, y: int, ms: int = 700) -> str:
+        await self._drag(x, y, x, y, ms)
+        return f"已长按 ({x},{y}) {ms} 毫秒"
+
+    @filter.llm_tool(name="phone_look")
+    async def phone_look(
+        self, event: AstrMessageEvent, question: str = ""
+    ) -> MessageEventResult:
+        """读屏没有文字（游戏、画布界面）时用。会截图交给视觉模型，返回画面描述和可点位置的像素坐标。
+
+        Args:
+            question(string): 可选，想问画面的问题，比如「开始按钮在哪」
+        """
+        yield await self._tool_text(self._look, question, serialize=False)
+
+    @filter.llm_tool(name="phone_drag")
+    async def phone_drag(
+        self,
+        event: AstrMessageEvent,
+        x1: int,
+        y1: int,
+        x2: int,
+        y2: int,
+        duration_ms: int = 800,
+    ) -> MessageEventResult:
+        """拖动、拖拽、按住往上拉、滑条、摇杆都用这个。
+
+        Args:
+            x1(number): 起点横坐标，整数像素
+            y1(number): 起点纵坐标，整数像素
+            x2(number): 终点横坐标，整数像素
+            y2(number): 终点纵坐标，整数像素
+            duration_ms(number): 时长，100～5000 毫秒的整数，默认 800
+        """
+        yield await self._tool_text(self._drag, x1, y1, x2, y2, duration_ms)
+
+    @filter.llm_tool(name="phone_press")
+    async def phone_press(
+        self, event: AstrMessageEvent, x: int, y: int, ms: int = 700
+    ) -> MessageEventResult:
+        """长按、按住不放时使用。
+
+        Args:
+            x(number): 横坐标，整数像素
+            y(number): 纵坐标，整数像素
+            ms(number): 时长，100～5000 毫秒的整数，默认 700
+        """
+        yield await self._tool_text(self._press, x, y, ms)
 
     @filter.command("溜达")
     async def roam_command(

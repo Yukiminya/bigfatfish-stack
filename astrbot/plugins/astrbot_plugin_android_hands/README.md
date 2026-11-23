@@ -100,3 +100,21 @@ QQ → NapCat → AstrBot(插件) → android-device → 无障碍服务 → 手
 - 打开应用靠桌面图标文字；B 站会恢复上次停留的页面，插件会自动退回信息流继续
 - 广告卡片（`广告,...`）会被跳过
 - 没有 AI 字幕的视频（纯音乐、无解说）就拿不到台词，只靠画面和弹幕
+
+## 游戏与画布界面的看图操作
+
+游戏或画布界面的无障碍读屏没有文字时，调用 `phone_look` 看图。可用
+`question` 提问，例如「开始按钮在哪」。插件会把截图发给配置的视觉模型，
+返回画面描述和按设备分辨率换算的像素坐标。用 `phone_tap_xy` 点击、
+`phone_drag` 拖动滑条或摇杆，或用 `phone_press` 长按。
+
+在插件配置中打开 `vision_enabled` 并填写 `vision_api_key`。其他配置可沿用默认值。
+
+| 配置项 | 值 |
+| --- | --- |
+| `vision_enabled` | 默认关闭，使用时设为 `true` |
+| `vision_api_key` | 视觉服务的 API Key |
+| `vision_base` | `https://api.siliconflow.cn/v1` |
+| `vision_model` | 推荐 `Qwen/Qwen3-VL-30B-A3B-Instruct` |
+| `vision_max_elements` | 最多返回 40 个可操作区域 |
+| `vision_timeout` | 30 秒 |

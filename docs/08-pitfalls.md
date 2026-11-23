@@ -35,6 +35,19 @@
 - **注意**：`settings put secure accessibility_enabled 1` 这类命令在 vivo 上会"执行成功但不生效"，
   必须在系统设置里点开关。
 
+## 2c. 游戏里「屏幕上没有可读文字」
+
+- **现象**：在前台是游戏时（例：`air.LostLife`），雪糕鱼回
+  `当前应用：air.LostLife` + `屏幕上没有可读文字`。**这跟 2b 是两码事**：2b 是整块读屏挂了，这条是读屏
+  正常但页面上没有控件。
+- **根因**：游戏引擎把整幅画面画在 `android.view.SurfaceView` 上，无障碍树里只有
+  `FrameLayout` + `SurfaceView` 两个节点，文字、描述、可点控件全是 0。系统只对原生控件有语义，
+  画布上的像素它看不见。截图仍然能截（走 Shizuku），所以缺的不是"看"，是"看懂"。
+- **修法**：配 `vision_api_key`（默认硅基流动，模型 `Qwen/Qwen3-VL-30B-A3B-Instruct`），然后用
+  `phone_look` 看图 → `phone_tap_xy` / `phone_drag` / `phone_press` 按坐标操作。
+- **别做的事**：不要去改无障碍服务、也不要以为是权限问题——`android-device tree` 返回的 JSON
+  结构是完整的，只是里面没有文字节点。
+
 ## 3. 锁屏之后什么都不动了
 
 - **现象**：白天好好的，锁屏半小时后发消息不回；解锁后又好了。

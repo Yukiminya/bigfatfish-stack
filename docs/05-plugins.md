@@ -48,10 +48,26 @@
 "voice_asr_key": ""                        // 用云端 ASR 才填，占位 ${SILICONFLOW_API_KEY}
 ```
 
+**游戏/画布界面的看图操作**：游戏把画面画在 `SurfaceView` 上，无障碍树里只有 2 个节点、
+0 条文字，`phone_screen` 会如实报「屏幕上没有可读文字」。这时换 `phone_look`：截一张图发给
+OpenAI 兼容的视觉模型，拿回画面描述 + 可点区域的**像素坐标**，再 `phone_tap_xy` 点击、
+`phone_drag` 拖动（滑条、摇杆）、`phone_press` 长按。模型给的是归一化坐标，由插件按
+`info` 里的设备分辨率换算，截图被缩放也不影响。
+
+```json
+"vision_enabled": false,                   // 看图默认关，要用时打开
+"vision_base": "https://api.siliconflow.cn/v1",
+"vision_api_key": "",                      // 必须填才有用，占位 ${SILICONFLOW_API_KEY}
+"vision_model": "Qwen/Qwen3-VL-30B-A3B-Instruct",
+"vision_max_elements": 40,                 // 最多返回几个可操作区域
+"vision_timeout": 30
+```
+
 **坏了怎么查**：
 1. 桥通不通：`curl -H @/root/.dsh/.bridge_headers http://127.0.0.1:3091/app/version`
 2. 识屏开没开：`/app/ui/task-begin` 返回 `SCREEN_MODE_OFF` 就是没开（去设置里开「实体识屏」）
 3. 手机是不是锁屏了——锁屏什么都点不动
+4. 游戏里点不动：那不是读屏坏了，是画布没有控件；先配 `vision_api_key`，再让它 `phone_look`
 
 ---
 
