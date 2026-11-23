@@ -118,3 +118,13 @@ QQ → NapCat → AstrBot(插件) → android-device → 无障碍服务 → 手
 | `vision_model` | 推荐 `Qwen/Qwen3-VL-30B-A3B-Instruct` |
 | `vision_max_elements` | 最多返回 40 个可操作区域 |
 | `vision_timeout` | 30 秒 |
+
+## 游戏高亮热区识别
+
+游戏读屏没有文字，且右上角的「?」能显示高亮热区时，先点「?」开启青绿色高亮，
+再调用 `phone_hotspots`。工具在本地识别截图中的高亮色，返回设备像素坐标和区域宽高。
+用 `phone_tap_xy`、`phone_drag` 或 `phone_press` 操作对应位置。
+「可点击」和「可拖动」是按框大小给出的操作提示。
+
+- `hotspot_tolerance`（默认 45）设定青绿色掩码的 R 通道上限。
+- `hotspot_min_area`（默认 400）设定热区所需的最少高亮像素数，按截图像素计算。

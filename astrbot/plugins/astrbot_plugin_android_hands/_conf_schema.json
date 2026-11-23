@@ -153,5 +153,15 @@
     "description": "看图：视觉请求超时秒数",
     "type": "int",
     "default": 30
+  },
+  "hotspot_tolerance": {
+    "description": "热区识别：R 通道容差，青绿色高亮块用，游戏高亮色偏深就调大",
+    "type": "int",
+    "default": 45
+  },
+  "hotspot_min_area": {
+    "description": "热区识别：小于这么多像素的碎块丢掉",
+    "type": "int",
+    "default": 400
   }
 }

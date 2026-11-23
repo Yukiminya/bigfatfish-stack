@@ -28,6 +28,8 @@ from hands_watch import AutoWatcher, WatchFlow  # noqa: E402
 from hands_roam import Roamer  # noqa: E402
 from voice_guard import VoiceGuard  # noqa: E402
 from vision_look import VisionClient, VisionError, to_pixels  # noqa: E402
+from hotspots import find_hotspots, to_screen  # noqa: E402
+from PIL import Image as PillowImage  # noqa: E402
 
 
 def _message_chain(parts: list) -> MessageChain:
@@ -904,6 +906,41 @@ class AndroidHands(Star):
         lines.append("提示：坐标可直接用于 phone_tap_xy、phone_drag、phone_press")
         return "\n".join(lines)
 
+    async def _hotspots(self) -> str:
+        tolerance = self._config.get("hotspot_tolerance", 45)
+        min_area = self._config.get("hotspot_min_area", 400)
+
+        with tempfile.TemporaryDirectory(
+            prefix="hotspots-", dir=os.path.abspath(self._data_dir())
+        ) as directory:
+            path = await self._serialized(self._capture, os.path.join(directory, "screen.png"))
+            try:
+                with PillowImage.open(path) as screenshot:
+                    image_size = screenshot.size
+                boxes = await asyncio.to_thread(find_hotspots, path, tolerance, min_area)
+            except (OSError, ValueError, PillowImage.DecompressionBombError) as exc:
+                raise PhoneError(f"热区截图读取失败：{exc}") from exc
+
+        if not boxes:
+            return "没看到高亮热区：先把游戏里的「?」打开再试"
+
+        width, height = await self._serialized(self._display_size)
+        regions = to_screen(boxes, image_size, (width, height))
+        screen = await self._tool_text(self._screen)
+        app_line = screen.partition("\n")[0]
+        if not app_line.startswith("当前应用："):
+            app_line = "当前应用：未知"
+
+        lines = [f"{app_line}（热区）"]
+        for index, box in enumerate(regions, start=1):
+            # 颜色只能定位高亮区域，动作提示按框的大小估计。
+            action = "可拖动" if box["w"] * 2 >= width or box["h"] * 4 >= height else "可点击"
+            lines.append(
+                f"{index}. ({box['cx']},{box['cy']}) 区域 {box['w']}x{box['h']} | {action}"
+            )
+        lines.append("提示：坐标可直接用于 phone_tap_xy、phone_drag、phone_press")
+        return "\n".join(lines)
+
     async def _drag(
         self, x1: int, y1: int, x2: int, y2: int, duration_ms: int = 800
     ) -> str:
@@ -936,6 +973,16 @@ class AndroidHands(Star):
             question(string): 可选，想问画面的问题，比如「开始按钮在哪」
         """
         yield await self._tool_text(self._look, question, serialize=False)
+
+    @filter.llm_tool(name="phone_hotspots")
+    async def phone_hotspots(self, event: AstrMessageEvent) -> MessageEventResult:
+        """画面可点或可拖、读屏没有文字，且游戏能用「?」显示高亮热区时使用。
+
+        返回每个热区的编号、设备像素坐标、宽高和可操作提示。
+
+        Args:
+        """
+        yield await self._tool_text(self._hotspots, serialize=False)
 
     @filter.llm_tool(name="phone_drag")
     async def phone_drag(
