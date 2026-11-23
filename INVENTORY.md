@@ -1,6 +1,6 @@
 # 资产清单（自动生成）
 
-生成时间：2026-11-23T04:49:16.345Z
+生成时间：2026-11-23T05:13:19.958Z
 
 来源：手机 `io.astrbot.android`（AstrBot 4.29.3 + NapCat 4.18.41）与电脑 DSH 桌面版，
 通过 adb + 手机上的 `astrbot_plugin_execrelay` 只读取回，未改动手机上的任何状态。
@@ -29,6 +29,7 @@
 | `docs/07-ops.md` | 1 | 4603 |
 | `docs/08-pitfalls.md` | 1 | 5516 |
 | `docs/09-acceptance.md` | 1 | 4411 |
+| `docs/10-dr-test.md` | 1 | 6985 |
 | `dsha/AGENTS.md` | 1 | 327 |
 | `dsha/dsh-profile` | 4 | 6155 |
 | `dsha/plugins` | 19 | 198046 |
@@ -40,6 +41,9 @@
 | `scripts/check-secrets.sh` | 1 | 2251 |
 | `scripts/deploy-dsh-assets.sh` | 1 | 3075 |
 | `scripts/deploy-phone.sh` | 1 | 4962 |
+| `scripts/dr-backup.sh` | 1 | 2373 |
+| `scripts/dr-reset.sh` | 1 | 4179 |
+| `scripts/dr-verify.sh` | 1 | 4594 |
 | `scripts/push-to-phone.ps1` | 1 | 3567 |
 | `scripts/render_template.py` | 1 | 1109 |
 | `scripts/verify-phone.sh` | 1 | 4057 |
@@ -115,6 +119,7 @@
 | `docs/07-ops.md` | 4603 | `8d404d1460522ef1` |
 | `docs/08-pitfalls.md` | 5516 | `7e74e82a931d57c0` |
 | `docs/09-acceptance.md` | 4411 | `f4032d09602849e2` |
+| `docs/10-dr-test.md` | 6985 | `d2037d705ca86700` |
 | `dsha/AGENTS.md` | 327 | `77b4d846a1984d29` |
 | `dsha/dsh-profile/cordis.patch.yml` | 1916 | `c677629e50d6082b` |
 | `dsha/dsh-profile/cordis.yml` | 223 | `c300dcf2ebc5f020` |
@@ -179,6 +184,9 @@
 | `scripts/check-secrets.sh` | 2251 | `4166b28bfa2e7799` |
 | `scripts/deploy-dsh-assets.sh` | 3075 | `a4c5896407be5837` |
 | `scripts/deploy-phone.sh` | 4962 | `7352bcb2b9accc0b` |
+| `scripts/dr-backup.sh` | 2373 | `854ff27cb2f852c4` |
+| `scripts/dr-reset.sh` | 4179 | `8bddba854083c34a` |
+| `scripts/dr-verify.sh` | 4594 | `5621e4d85e5fc05d` |
 | `scripts/push-to-phone.ps1` | 3567 | `a825e519bb8483ee` |
 | `scripts/render_template.py` | 1109 | `d55b44a3f0c3b2eb` |
 | `scripts/verify-phone.sh` | 4057 | `91a0a89c97ada9d9` |
