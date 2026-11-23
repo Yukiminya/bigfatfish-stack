@@ -17,6 +17,24 @@
 - **修法**：设置 → 设备能力授权 → 识屏模式选「实体识屏」，并打开无障碍服务、截屏授权。
   做完先复测 `task-begin` 返回 `ok:true` 再继续，别写代码赌。
 
+## 2b. 读屏失败：`Screen tree unavailable`
+
+- **现象**：雪糕鱼回「读取屏幕失败（退出码 1）：Screen tree unavailable」。而 `android-device info`、
+  `screenshot`、`tap`、`key` 全都正常——**只有 `tree` 挂**，所以很容易误判成"桥坏了"。
+- **根因**：手机的无障碍总开关是关的（`settings get secure accessibility_enabled` = `0`、
+  `enabled_accessibility_services` = `null`）。`android-device` 的控件树**完全依赖 AstrBot 这个 App
+  自己的无障碍服务**：`io.astrbot.android/io.astrbot.android.device.DeviceAccessibility`
+  （系统无障碍列表里显示名是「**终端设备辅助**」）。tap/screenshot 走的是 Shizuku，所以它们不受影响。
+- **别开错 App**：DSHA（`dsh.android.client`，无障碍列表里叫「DSH-A-Su 屏幕控制」）是另一个程序。
+  把它的无障碍打开对 `android-device` 一点用都没有——这一条我踩过，排查了半小时。
+- **修法**：设置 → 无障碍 → 已下载的服务 → 「终端设备辅助」→ 允许（vivo 会弹「无障碍为高度敏感权限」，
+  点允许）。验证两步：
+  1. `adb shell settings get secure enabled_accessibility_services` 里出现
+     `io.astrbot.android/io.astrbot.android.device.DeviceAccessibility`；
+  2. 在手机里跑 `android-device tree`，应返回 `{"format":"json","tree":{...}}` 而不是报错。
+- **注意**：`settings put secure accessibility_enabled 1` 这类命令在 vivo 上会"执行成功但不生效"，
+  必须在系统设置里点开关。
+
 ## 3. 锁屏之后什么都不动了
 
 - **现象**：白天好好的，锁屏半小时后发消息不回；解锁后又好了。

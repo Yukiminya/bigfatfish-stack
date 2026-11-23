@@ -1,6 +1,6 @@
 # 资产清单（自动生成）
 
-生成时间：2026-11-23T06:58:26.260Z
+生成时间：2026-11-23T07:17:48.355Z
 
 来源：手机 `io.astrbot.android`（AstrBot 4.29.3 + NapCat 4.18.41）与电脑 DSH 桌面版，
 通过 adb + 手机上的 `astrbot_plugin_execrelay` 只读取回，未改动手机上的任何状态。
@@ -27,7 +27,7 @@
 | `docs/05-plugins.md` | 1 | 12732 |
 | `docs/06-voice.md` | 1 | 4165 |
 | `docs/07-ops.md` | 1 | 4603 |
-| `docs/08-pitfalls.md` | 1 | 5516 |
+| `docs/08-pitfalls.md` | 1 | 7099 |
 | `docs/09-acceptance.md` | 1 | 4411 |
 | `docs/10-dr-test.md` | 1 | 6985 |
 | `dsha/AGENTS.md` | 1 | 327 |
@@ -120,7 +120,7 @@
 | `docs/05-plugins.md` | 12732 | `15ff57facc4f1921` |
 | `docs/06-voice.md` | 4165 | `7c9bc102bcf0b097` |
 | `docs/07-ops.md` | 4603 | `8d404d1460522ef1` |
-| `docs/08-pitfalls.md` | 5516 | `7e74e82a931d57c0` |
+| `docs/08-pitfalls.md` | 7099 | `0cf7c1a1c92e19f1` |
 | `docs/09-acceptance.md` | 4411 | `f4032d09602849e2` |
 | `docs/10-dr-test.md` | 6985 | `d2037d705ca86700` |
 | `dsha/AGENTS.md` | 327 | `77b4d846a1984d29` |
