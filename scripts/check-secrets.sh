@@ -37,13 +37,20 @@ else
   say "  none"
 fi
 
-# 4. 已知的历史泄露值（本项目里出现过的那几个，防止手滑贴回来）
-say "== 4. 已知的历史值 =="
-if grep -rInE '845402bec2f54d7c|199dfa281eb78d49|c9f1c207d2126581|29a33fc992aac87f|coovoice2026|72b97f42ccd810d7' \
-     --exclude-dir=.git . 2>/dev/null; then
-  say "  ^^ 有命中"; HITS=$((HITS+1))
+# 4. 自己的东西：把「绝对不该出现」的字面量写进一个本地文件，脚本会帮你查
+#    .secrets-baseline.local（已在 .gitignore 里）每行一个字符串，不参与提交
+say "== 4. 本地基线（.secrets-baseline.local）=="
+if [[ -f .secrets-baseline.local ]]; then
+  hit=0
+  while IFS= read -r pat; do
+    [[ -z "$pat" || "$pat" == \#* ]] && continue
+    if grep -rInF --exclude-dir=.git --exclude=.secrets-baseline.local -- "$pat" . 2>/dev/null; then
+      hit=1
+    fi
+  done < .secrets-baseline.local
+  if [[ $hit -eq 1 ]]; then say "  ^^ 有命中"; HITS=$((HITS+1)); else say "  none"; fi
 else
-  say "  none"
+  say "  none（没有基线文件，跳过）"
 fi
 
 say ""

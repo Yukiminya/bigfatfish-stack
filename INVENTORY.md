@@ -1,6 +1,6 @@
 # 资产清单（自动生成）
 
-生成时间：2026-11-23T00:19:33.719Z
+生成时间：2026-11-23T00:26:23.848Z
 
 来源：手机 `io.astrbot.android`（AstrBot 4.29.3 + NapCat 4.18.41）与电脑 DSH 桌面版，
 通过 adb + 手机上的 `astrbot_plugin_execrelay` 只读取回，未改动手机上的任何状态。
@@ -11,14 +11,24 @@
 |---|---:|---:|
 | `.env.example` | 1 | 1262 |
 | `.gitattributes` | 1 | 316 |
-| `.gitignore` | 1 | 154 |
+| `.gitignore` | 1 | 178 |
 | `LICENSE` | 1 | 1086 |
+| `MODIFICATIONS.md` | 1 | 5258 |
 | `README.md` | 1 | 4993 |
 | `astrbot/cmd_config.json.example` | 1 | 8476 |
 | `astrbot/persona` | 6 | 17992 |
 | `astrbot/plugin-configs` | 6 | 2342 |
-| `astrbot/plugins` | 41 | 310647 |
+| `astrbot/plugins` | 41 | 310626 |
 | `astrbot/skills.json` | 1 | 269 |
+| `docs/01-architecture.md` | 1 | 5574 |
+| `docs/02-phone-quickstart.md` | 1 | 5213 |
+| `docs/03-dsha.md` | 1 | 4344 |
+| `docs/04-legacy-pc.md` | 1 | 3056 |
+| `docs/05-plugins.md` | 1 | 10147 |
+| `docs/06-voice.md` | 1 | 4165 |
+| `docs/07-ops.md` | 1 | 4603 |
+| `docs/08-pitfalls.md` | 1 | 5516 |
+| `docs/09-acceptance.md` | 1 | 4411 |
 | `dsha/AGENTS.md` | 1 | 327 |
 | `dsha/dsh-profile` | 4 | 6155 |
 | `dsha/plugins` | 19 | 198046 |
@@ -27,7 +37,7 @@
 | `napcat/config` | 11 | 15586 |
 | `scripts/apply-config.py` | 1 | 3714 |
 | `scripts/apply-persona.py` | 1 | 2953 |
-| `scripts/check-secrets.sh` | 1 | 1916 |
+| `scripts/check-secrets.sh` | 1 | 2251 |
 | `scripts/deploy-dsh-assets.sh` | 1 | 3075 |
 | `scripts/deploy-phone.sh` | 1 | 4649 |
 | `scripts/push-to-phone.ps1` | 1 | 3567 |
@@ -40,7 +50,7 @@
 |---|---:|---|
 | `.env.example` | 1262 | `8fb059f1d592a148` |
 | `.gitattributes` | 316 | `4f70b8d5b5982f54` |
-| `.gitignore` | 154 | `46a9e72a56441a47` |
+| `.gitignore` | 178 | `d0ba5b36ad6fc438` |
 | `astrbot/cmd_config.json.example` | 8476 | `8b81abc0e57e27a7` |
 | `astrbot/persona/bot-blocklist.md` | 1644 | `919d16a07f137dd1` |
 | `astrbot/persona/dafeiyu.txt` | 3387 | `3f7c863fbbf765f8` |
@@ -92,10 +102,19 @@
 | `astrbot/plugins/astrbot_plugin_proactive/voice_local.py` | 3655 | `3ac630230b81f561` |
 | `astrbot/plugins/astrbot_plugin_probe/main.py` | 1481 | `b94723c94034998f` |
 | `astrbot/plugins/astrbot_plugin_probe/metadata.yaml` | 187 | `a7d7684bdfdaefee` |
-| `astrbot/plugins/astrbot_plugin_qq_voice_call/_conf_schema.json` | 2011 | `10e309f0eb8392c3` |
-| `astrbot/plugins/astrbot_plugin_qq_voice_call/main.py` | 37709 | `2c3873287a8a78d1` |
+| `astrbot/plugins/astrbot_plugin_qq_voice_call/_conf_schema.json` | 1999 | `7f5c0d014fac822b` |
+| `astrbot/plugins/astrbot_plugin_qq_voice_call/main.py` | 37700 | `6ce4b50879be998a` |
 | `astrbot/plugins/astrbot_plugin_qq_voice_call/metadata.yaml` | 217 | `0119b93fd08494b3` |
 | `astrbot/skills.json` | 269 | `5afa04d8cd27fc91` |
+| `docs/01-architecture.md` | 5574 | `de8a4b9e611265b2` |
+| `docs/02-phone-quickstart.md` | 5213 | `f44962a748542321` |
+| `docs/03-dsha.md` | 4344 | `ca19d77b16511e2f` |
+| `docs/04-legacy-pc.md` | 3056 | `c25f4f3df3db9a4d` |
+| `docs/05-plugins.md` | 10147 | `a020114a55a450c1` |
+| `docs/06-voice.md` | 4165 | `7c9bc102bcf0b097` |
+| `docs/07-ops.md` | 4603 | `8d404d1460522ef1` |
+| `docs/08-pitfalls.md` | 5516 | `7e74e82a931d57c0` |
+| `docs/09-acceptance.md` | 4411 | `f4032d09602849e2` |
 | `dsha/AGENTS.md` | 327 | `77b4d846a1984d29` |
 | `dsha/dsh-profile/cordis.patch.yml` | 1916 | `c677629e50d6082b` |
 | `dsha/dsh-profile/cordis.yml` | 223 | `c300dcf2ebc5f020` |
@@ -142,6 +161,7 @@
 | `dsha/skills/video-watch-plus/verification/record-2026-09-30.md` | 6793 | `6a512e0260e984c6` |
 | `legacy-pc/qq-access-config.json.example` | 7333 | `1aa2fa9a20c9d35c` |
 | `LICENSE` | 1086 | `4f55975e122712e5` |
+| `MODIFICATIONS.md` | 5258 | `6bcb880f925b9579` |
 | `napcat/config/pc/napcat_3325646322.json.example` | 193 | `854bd7ce550e3880` |
 | `napcat/config/pc/napcat_protocol_3325646322.json.example` | 120 | `cce316df4649e0fb` |
 | `napcat/config/pc/onebot11_3325646322.json.example` | 950 | `a10f5558e689dcc3` |
@@ -156,7 +176,7 @@
 | `README.md` | 4993 | `246348d1e2bdb6e0` |
 | `scripts/apply-config.py` | 3714 | `99ee5649e5fca5e6` |
 | `scripts/apply-persona.py` | 2953 | `c4b6bdcb9f9aa64f` |
-| `scripts/check-secrets.sh` | 1916 | `3499e928301c4d12` |
+| `scripts/check-secrets.sh` | 2251 | `4166b28bfa2e7799` |
 | `scripts/deploy-dsh-assets.sh` | 3075 | `a4c5896407be5837` |
 | `scripts/deploy-phone.sh` | 4649 | `f4c3bf3a18f118f1` |
 | `scripts/push-to-phone.ps1` | 3567 | `a825e519bb8483ee` |

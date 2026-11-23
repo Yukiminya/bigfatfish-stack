@@ -12,7 +12,7 @@
   "ws_token": {
     "type": "string",
     "description": "语音桥 Token（与 NapCat 插件配置里的令牌一致）",
-    "default": "coovoice2026"
+    "default": ""
   },
   "ws_path": {
     "type": "string",

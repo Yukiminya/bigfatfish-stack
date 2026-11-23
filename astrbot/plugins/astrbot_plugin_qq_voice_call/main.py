@@ -98,7 +98,7 @@ class QQVoiceCall(Star):
             self.ws_port = int(cfg.get("ws_port") or 6198)
         except (TypeError, ValueError):
             self.ws_port = 6198
-        self.ws_token = str(cfg.get("ws_token") or "coovoice2026")
+        self.ws_token = str(cfg.get("ws_token") or "")
         self.ws_path = str(cfg.get("ws_path") or "/qq-voice-call")
 
         raw = cfg.get("voice_whitelist")
@@ -679,7 +679,7 @@ class QQVoiceCall(Star):
         if request is not None and getattr(request, "headers", None) is not None:
             headers = {k.lower(): v for k, v in request.headers.items()}
         auth = headers.get("authorization", "")
-        if self.ws_token and auth != f"Bearer {self.ws_token}":
+        if not self.ws_token or auth != f"Bearer {self.ws_token}":
             log(f"拒绝连接：token 不符 ({auth!r})")
             await ws.close(1008, "token")
             return
