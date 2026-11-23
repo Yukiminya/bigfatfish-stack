@@ -41,6 +41,7 @@ _COMMANDS = {
     "info": "读取手机信息",
     "app-status": "读取服务状态",
     "tree": "读取屏幕",
+    "screenshot": "截取屏幕",
     "tap": "点击屏幕",
     "swipe": "滑动屏幕",
     "input": "输入文字",

@@ -82,6 +82,44 @@ class SmokeVisionTests(unittest.TestCase):
         result = vision.to_pixels(elements, 1080, 2400, image_size=(576, 1280))
         self.assertEqual((result[0]["x"], result[0]["y"]), (540, 2370))
 
+    def test_device_commands_cover_calls(self):
+        """main.py 里调用的每个设备命令都必须登记在 _COMMANDS 里。
+
+        这个坑踩过：_capture 用 self._device("screenshot")，但 _COMMANDS 没登记
+        screenshot，于是 phone_look / phone_shot 全部回「设备命令不受支持」。
+        """
+        import ast
+
+        source = MODULE_PATH.parent.joinpath("main.py").read_text(encoding="utf-8")
+        tree = ast.parse(source)
+        declared = set()
+        for node in ast.walk(tree):
+            if isinstance(node, ast.Assign) and any(
+                isinstance(target, ast.Name) and target.id == "_COMMANDS"
+                for target in node.targets
+            ):
+                declared = {
+                    key.value
+                    for key in node.value.keys
+                    if isinstance(key, ast.Constant)
+                }
+        self.assertTrue(declared, "_COMMANDS 没找到")
+        used = set()
+        for node in ast.walk(tree):
+            if not isinstance(node, ast.Call):
+                continue
+            func = node.func
+            if not (
+                isinstance(func, ast.Attribute)
+                and func.attr == "_device"
+                and node.args
+                and isinstance(node.args[0], ast.Constant)
+                and isinstance(node.args[0].value, str)
+            ):
+                continue
+            used.add(node.args[0].value)
+        self.assertEqual(used - declared, set(), "有设备命令没登记进 _COMMANDS")
+
 
 if __name__ == "__main__":
     unittest.main()
