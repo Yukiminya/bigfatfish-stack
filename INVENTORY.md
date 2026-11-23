@@ -1,6 +1,6 @@
 # 资产清单（自动生成）
 
-生成时间：2026-11-23T05:13:19.958Z
+生成时间：2026-11-23T06:05:13.688Z
 
 来源：手机 `io.astrbot.android`（AstrBot 4.29.3 + NapCat 4.18.41）与电脑 DSH 桌面版，
 通过 adb + 手机上的 `astrbot_plugin_execrelay` 只读取回，未改动手机上的任何状态。
@@ -13,18 +13,18 @@
 | `.gitattributes` | 1 | 316 |
 | `.gitignore` | 1 | 178 |
 | `LICENSE` | 1 | 1086 |
-| `MODIFICATIONS.md` | 1 | 5258 |
+| `MODIFICATIONS.md` | 1 | 6079 |
 | `README.md` | 1 | 4993 |
 | `astrbot/cmd_config.json.example` | 1 | 8476 |
 | `astrbot/persona` | 6 | 17992 |
 | `astrbot/plugin-configs` | 6 | 2342 |
-| `astrbot/plugins` | 41 | 310626 |
+| `astrbot/plugins` | 43 | 313677 |
 | `astrbot/skills.json` | 1 | 269 |
 | `docs/01-architecture.md` | 1 | 5574 |
 | `docs/02-phone-quickstart.md` | 1 | 5213 |
 | `docs/03-dsha.md` | 1 | 4344 |
 | `docs/04-legacy-pc.md` | 1 | 3056 |
-| `docs/05-plugins.md` | 1 | 10147 |
+| `docs/05-plugins.md` | 1 | 11852 |
 | `docs/06-voice.md` | 1 | 4165 |
 | `docs/07-ops.md` | 1 | 4603 |
 | `docs/08-pitfalls.md` | 1 | 5516 |
@@ -99,6 +99,8 @@
 | `astrbot/plugins/astrbot_plugin_persona_manage/main.py` | 19116 | `d35d53b212ccee02` |
 | `astrbot/plugins/astrbot_plugin_persona_manage/metadata.yaml` | 199 | `d4421e8d493e6893` |
 | `astrbot/plugins/astrbot_plugin_persona_manage/README.md` | 4374 | `d28e04d90e5a39ae` |
+| `astrbot/plugins/astrbot_plugin_persona_probe/main.py` | 2628 | `4a493d92a769ee6a` |
+| `astrbot/plugins/astrbot_plugin_persona_probe/metadata.yaml` | 423 | `b564611a7afb8924` |
 | `astrbot/plugins/astrbot_plugin_proactive/_conf_schema.json` | 3363 | `ca8acef6dea023af` |
 | `astrbot/plugins/astrbot_plugin_proactive/main.py` | 30160 | `55be623942076df7` |
 | `astrbot/plugins/astrbot_plugin_proactive/metadata.yaml` | 270 | `487932e86912d7ce` |
@@ -114,7 +116,7 @@
 | `docs/02-phone-quickstart.md` | 5213 | `f44962a748542321` |
 | `docs/03-dsha.md` | 4344 | `ca19d77b16511e2f` |
 | `docs/04-legacy-pc.md` | 3056 | `c25f4f3df3db9a4d` |
-| `docs/05-plugins.md` | 10147 | `a020114a55a450c1` |
+| `docs/05-plugins.md` | 11852 | `8964a5520260df65` |
 | `docs/06-voice.md` | 4165 | `7c9bc102bcf0b097` |
 | `docs/07-ops.md` | 4603 | `8d404d1460522ef1` |
 | `docs/08-pitfalls.md` | 5516 | `7e74e82a931d57c0` |
@@ -166,7 +168,7 @@
 | `dsha/skills/video-watch-plus/verification/record-2026-09-30.md` | 6793 | `6a512e0260e984c6` |
 | `legacy-pc/qq-access-config.json.example` | 7333 | `1aa2fa9a20c9d35c` |
 | `LICENSE` | 1086 | `4f55975e122712e5` |
-| `MODIFICATIONS.md` | 5258 | `6bcb880f925b9579` |
+| `MODIFICATIONS.md` | 6079 | `6b87d57e252a5655` |
 | `napcat/config/pc/napcat_3325646322.json.example` | 193 | `854bd7ce550e3880` |
 | `napcat/config/pc/napcat_protocol_3325646322.json.example` | 120 | `cce316df4649e0fb` |
 | `napcat/config/pc/onebot11_3325646322.json.example` | 950 | `a10f5558e689dcc3` |

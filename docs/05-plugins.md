@@ -1,4 +1,4 @@
-# 05 · 12 个插件逐个说
+# 05 · 13 个插件逐个说
 
 全部在 `astrbot/plugins/`，行为以源码为准。装法见 `scripts/deploy-phone.sh`，配置落在
 `/persistent/astrbot/data/config/astrbot_plugin_<name>_config.json`。
@@ -16,6 +16,7 @@
 | `libido` | 一个自己走的 0-100 数值 + 五档语气 + 面板 | 有 |
 | `memprobe` | 探针：把钩子/字段/目录结构写成 json | 无 |
 | `persona_manage` | 人设提示词与历史版本管理（Web 面板） | 有 |
+| `persona_probe` | 证明人设真的进了第一条 system 消息（只写日志） | 无 |
 | `proactive` | 不定时主动发私聊（带话题轮换、语音） | 有 |
 | `probe` | 一次性 HTTP 探针（测电脑 TTS 通不通） | 无 |
 | `qq_voice_call` | 接 QQ 私聊语音来电，实时对话 | 有 |
@@ -157,6 +158,37 @@
 会话库什么结构」写到 `/android-share/memprobe.json`。写插件前先跑它，能省掉猜 API 的时间。
 
 **坏了怎么查**：文件没出现 = 插件没加载；文件是旧的 = AstrBot 没重启。
+
+---
+
+## persona_probe · 人设到底进没进提示词
+
+**干什么**：不改变任何请求，只在 `on_agent_begin` 里核对一件事——「按人设拼出来的那段
+`\n# Persona Instructions\n\n<人设全文>\n`，是不是逐字出现在**第一条 system 消息**里」。
+答案只写一行 INFO 日志。
+
+**怎么读这行日志**（WebUI → 数据与日志 → 日志，过滤 `Persona probe`）：
+
+```
+Persona probe status=matched role=system persona_id='default' source=persona message_index=0
+```
+
+| 字段 | 含义 |
+|---|---|
+| `status=matched` | 找到了一字不差的注入文本；`missing` = 没进提示词；`no_persona_trace` = 这次请求没带人设 ID |
+| `role=system` | 位置是系统级消息，不是 user 消息 |
+| `persona_id` | 用的哪个人设（`agent_runner.config.persona.persona_id` 指的那个） |
+| `source` | `persona` = 人设本体；`webchat_default` = WebChat 的兜底人设 |
+| `message_index=0` | 在消息列表里的下标，0 就是第一条 |
+
+**为什么值得留着**：改完人设之后，「后台看着改了、聊天里却没变」是最常见的坑。
+这行日志把「我以为注入了」变成「注入确实发生了」。
+
+**已知坑**：Codex 写这个插件时漏了 `@register(...)` 装饰器，插件目录在、日志也在、
+但插件根本没被加载（`/api/plugin/get` 里查不到）。补上装饰器重启后才有输出——所以
+`main.py` 第 9 行那行 `@register(...)` 是后补的，不是原稿。
+
+**开销**：只在真机 request 时跑一次字符串 `in` 判断，人设 2 KB 量级，可忽略。
 
 ---
 

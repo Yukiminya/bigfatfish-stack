@@ -2,9 +2,9 @@
 
 这套东西不是插件市场一键装的组合。下面把**每一处改动**列清楚，方便你复现，也方便升级时判断哪里会被覆盖。
 
-## AstrBot 插件（12 个，全部自己写的）
+## AstrBot 插件（13 个，全部自己写的）
 
-`astrbot/plugins/` 下 12 个目录，原版 AstrBot 里一个都没有：
+`astrbot/plugins/` 下 13 个目录，原版 AstrBot 里一个都没有：
 
 | 插件 | 作者标记 | 说明 |
 |---|---|---|
@@ -17,9 +17,17 @@
 | `astrbot_plugin_libido` v1.0.0 | Codex | 0-100 状态数值 + 五档语气 + 面板 |
 | `astrbot_plugin_memprobe` v1.0.1 | phone-hands | 能力探针 |
 | `astrbot_plugin_persona_manage` v1.0.0 | lead | 人设提示词与版本管理 |
+| `astrbot_plugin_persona_probe` v1.0.0 | Codex（`author` 字段写的 `local`） | 核对人设是否逐字进入第一条 system 消息，只写日志 |
 | `astrbot_plugin_proactive` v1.1.1 | xuegaoyu | 不定时主动发私聊 |
 | `astrbot_plugin_probe` v1.0.0 | lead | 一次性 HTTP 探针 |
 | `astrbot_plugin_qq_voice_call` v1.3.7 | coo | 接 QQ 私聊语音来电 |
+
+`persona_probe` 是**诊断插件**不是功能：它不改请求、不改响应，只在每次请求时核对人设文本
+是否逐字出现在第一条 system 消息里，然后写一行日志。加它是为了把「我以为人设注入了」变成
+可验证的事实——2026-11-23 在真机上抓到过 `status=matched role=system persona_id='default'
+source=persona message_index=0`，人设确实以 `role=system` 排在消息 #0。
+两个申报细节：`main.py` 是 Codex 写的，但原稿漏了 `@register(...)`（插件装上了却不加载、
+日志一直是空的），装饰器是后补的；`metadata.yaml` 的 `author` 字段写的是 `local`。
 
 ## AstrBot 主配置（`astrbot/cmd_config.json.example`）
 

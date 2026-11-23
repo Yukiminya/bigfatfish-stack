@@ -1,0 +1,9 @@
+name: astrbot_plugin_persona_probe
+display_name: 人设系统提示词探针
+desc: >-
+  为使用内置 Agent 的会话启用插件，选定人设并触发一次对话。
+  在插件 INFO 日志中，status=matched role=system 表示系统消息包含完整人设注入文本。
+  探针只记录核对结果、来源、人设 ID 和从零开始的消息下标。
+version: "1.0.0"
+author: local
+astrbot_version: "==4.29.3"
