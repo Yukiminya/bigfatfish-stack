@@ -68,6 +68,20 @@ class SmokeVisionTests(unittest.TestCase):
         ]
         self.assertEqual(vision.to_pixels(elements, 1080, 2400), [])
 
+    def test_qwen_thousand_scale(self):
+        # Qwen-VL 系默认回 0~1000 的相对坐标。
+        elements = [{"name": "停止全部", "x": 498, "y": 258, "kind": "button"}]
+        self.assertEqual(
+            vision.to_pixels(elements, 1080, 2400),
+            [{"name": "停止全部", "x": 538, "y": 619, "kind": "button", "confident": False}],
+        )
+
+    def test_sent_image_pixels(self):
+        # 万一模型直接回上传图的像素，就按上传图尺寸换算。
+        elements = [{"x": 288, "y": 1264}]
+        result = vision.to_pixels(elements, 1080, 2400, image_size=(576, 1280))
+        self.assertEqual((result[0]["x"], result[0]["y"]), (540, 2370))
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -882,7 +882,7 @@ class AndroidHands(Star):
 
         app = result["app"] or "未知"
         desc = result["desc"] or "未识别画面描述"
-        elements = to_pixels(result["elements"], width, height)
+        elements = to_pixels(result["elements"], width, height, result.get("image_size"))
         if not elements:
             return (
                 f"画面：{desc}\n"
