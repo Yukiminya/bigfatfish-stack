@@ -201,6 +201,16 @@ Persona probe status=matched role=system persona_id='default' source=persona mes
 **和 AstrBot 自带人设的关系**：AstrBot 自己的人也设在 `data_v4.db` 的 `personas` 表；
 这个插件管的是「提示词文本 + 版本」。两边都能改人设，**别同时改**，容易自己覆盖自己。
 
+**后台里的页面入口（2026-11-23 加）**：插件目录下多了 `views/persona/index.html`，用的是
+AstrBot 4.29.3 自带的「插件页面」机制——后台扫到 `views/<页面名>/index.html` 就会把它挂出来，
+侧边栏直接多一项「人设提示词管理」，点开就是编辑器（字数/行数/估算 token、人设下拉、
+历史版本与一键回滚）。页面里不直连 `/api/plug/...`，而是走后台注入的 bridge
+（`window.AstrBotPluginView.apiGet/apiPost`），所以写入一定同源、不会因为
+`sec-fetch-site` 被 403。页面地址是 `/#/plugin-view/astrbot_plugin_persona_manage/persona`。
+
+**为什么不能直接开面板 URL**：`/api/plug/astrbot_plugin_persona_manage/panel` 需要后台登录态，
+裸链接打开只会得到 `{"status":"error","message":"未授权"}`——这是设计如此，不是坏了。
+
 **坏了怎么查**：面板打不开 → 插件没加载或端口冲突；改了不生效 → 确认
 `agent_runner.config.persona.persona_id` 指向的那个人设是你改的那个。
 

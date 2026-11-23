@@ -1,6 +1,6 @@
 # 资产清单（自动生成）
 
-生成时间：2026-11-23T06:18:47.003Z
+生成时间：2026-11-23T06:58:26.260Z
 
 来源：手机 `io.astrbot.android`（AstrBot 4.29.3 + NapCat 4.18.41）与电脑 DSH 桌面版，
 通过 adb + 手机上的 `astrbot_plugin_execrelay` 只读取回，未改动手机上的任何状态。
@@ -18,13 +18,13 @@
 | `astrbot/cmd_config.json.example` | 1 | 8476 |
 | `astrbot/persona` | 6 | 17827 |
 | `astrbot/plugin-configs` | 6 | 2342 |
-| `astrbot/plugins` | 43 | 313677 |
+| `astrbot/plugins` | 44 | 326918 |
 | `astrbot/skills.json` | 1 | 269 |
 | `docs/01-architecture.md` | 1 | 5574 |
 | `docs/02-phone-quickstart.md` | 1 | 5213 |
 | `docs/03-dsha.md` | 1 | 4344 |
 | `docs/04-legacy-pc.md` | 1 | 3056 |
-| `docs/05-plugins.md` | 1 | 11852 |
+| `docs/05-plugins.md` | 1 | 12732 |
 | `docs/06-voice.md` | 1 | 4165 |
 | `docs/07-ops.md` | 1 | 4603 |
 | `docs/08-pitfalls.md` | 1 | 5516 |
@@ -99,6 +99,7 @@
 | `astrbot/plugins/astrbot_plugin_persona_manage/main.py` | 19116 | `d35d53b212ccee02` |
 | `astrbot/plugins/astrbot_plugin_persona_manage/metadata.yaml` | 199 | `d4421e8d493e6893` |
 | `astrbot/plugins/astrbot_plugin_persona_manage/README.md` | 4374 | `d28e04d90e5a39ae` |
+| `astrbot/plugins/astrbot_plugin_persona_manage/views/persona/index.html` | 13241 | `0cd96512d40166b0` |
 | `astrbot/plugins/astrbot_plugin_persona_probe/main.py` | 2628 | `4a493d92a769ee6a` |
 | `astrbot/plugins/astrbot_plugin_persona_probe/metadata.yaml` | 423 | `b564611a7afb8924` |
 | `astrbot/plugins/astrbot_plugin_proactive/_conf_schema.json` | 3363 | `ca8acef6dea023af` |
@@ -116,7 +117,7 @@
 | `docs/02-phone-quickstart.md` | 5213 | `f44962a748542321` |
 | `docs/03-dsha.md` | 4344 | `ca19d77b16511e2f` |
 | `docs/04-legacy-pc.md` | 3056 | `c25f4f3df3db9a4d` |
-| `docs/05-plugins.md` | 11852 | `8964a5520260df65` |
+| `docs/05-plugins.md` | 12732 | `15ff57facc4f1921` |
 | `docs/06-voice.md` | 4165 | `7c9bc102bcf0b097` |
 | `docs/07-ops.md` | 4603 | `8d404d1460522ef1` |
 | `docs/08-pitfalls.md` | 5516 | `7e74e82a931d57c0` |
