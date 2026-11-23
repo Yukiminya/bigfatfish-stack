@@ -1,0 +1,17 @@
+{
+  "network": {
+    "websocketClients": [
+      {
+        "name": "AstrBot",
+        "enable": true,
+        "url": "ws://127.0.0.1:6199/ws",
+        "messagePostFormat": "array",
+        "reportSelfMessage": false,
+        "token": "",
+        "reconnectInterval": 5000,
+        "heartInterval": 30000,
+        "debug": false
+      }
+    ]
+  }
+}

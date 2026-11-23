@@ -1,0 +1,7 @@
+name: astrbot_plugin_android_hands
+display_name: 雪糕鱼的手机
+desc: 在手机本地读屏、操作 Android 手机，自己刷 B 站/小黑盒/小红书并写评论，遇到有趣的连截图发给主人
+version: v3.7.0
+author: Codex
+astrbot_version: ">=4.29,<5"
+support_platforms: [aiocqhttp]

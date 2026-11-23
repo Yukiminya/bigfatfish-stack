@@ -1,0 +1,67 @@
+{
+  "ws_host": {
+    "type": "string",
+    "description": "语音桥监听地址",
+    "default": "127.0.0.1"
+  },
+  "ws_port": {
+    "type": "int",
+    "description": "语音桥监听端口（与 NapCat 插件配置里的地址端口一致）",
+    "default": 6198
+  },
+  "ws_token": {
+    "type": "string",
+    "description": "语音桥 Token（与 NapCat 插件配置里的令牌一致）",
+    "default": "coovoice2026"
+  },
+  "ws_path": {
+    "type": "string",
+    "description": "语音桥路径",
+    "default": "/qq-voice-call"
+  },
+  "voice_whitelist": {
+    "type": "string",
+    "description": "允许接听的 QQ 号，逗号分隔；留空表示谁都不接",
+    "default": "641961016"
+  },
+  "voice_uid_whitelist": {
+    "type": "string",
+    "description": "允许接听的 QQ UID（有些来电只给 UID、给不出 QQ 号），逗号分隔",
+    "default": "u_hYiAbro406zZ6eH10MNN6Q"
+  },
+  "auto_accept": {
+    "type": "bool",
+    "description": "白名单来电是否自动接听",
+    "default": true
+  },
+  "tts_url": {
+    "type": "string",
+    "description": "GPT-SoVITS 语音接口地址（POST /tts，body {\"text\": ...}）",
+    "default": "http://127.0.0.1:9880"
+  },
+  "asr_model": {
+    "type": "string",
+    "description": "sherpa-onnx SenseVoice 模型路径",
+    "default": "/android-share/asr/model.int8.onnx"
+  },
+  "asr_tokens": {
+    "type": "string",
+    "description": "sherpa-onnx tokens 路径",
+    "default": "/android-share/asr/tokens.txt"
+  },
+  "speaker_monitor": {
+    "type": "string",
+    "description": "抓对方声音用的 PulseAudio 设备（通话播放所在的 null sink 的 monitor）",
+    "default": "qqspk.monitor"
+  },
+  "mic_sink": {
+    "type": "string",
+    "description": "喂我们说话用的 PulseAudio 设备（其 monitor 通过 qqmicsrc 作为麦克风）",
+    "default": "qqmic"
+  },
+  "max_reply_chars": {
+    "type": "int",
+    "description": "每句话最多多少字（语音通话越长越容易卡）",
+    "default": 60
+  }
+}

@@ -1,0 +1,164 @@
+# 资产清单（自动生成）
+
+生成时间：2026-11-23T00:19:33.719Z
+
+来源：手机 `io.astrbot.android`（AstrBot 4.29.3 + NapCat 4.18.41）与电脑 DSH 桌面版，
+通过 adb + 手机上的 `astrbot_plugin_execrelay` 只读取回，未改动手机上的任何状态。
+
+## 分组统计
+
+| 目录 | 文件数 | 字节 |
+|---|---:|---:|
+| `.env.example` | 1 | 1262 |
+| `.gitattributes` | 1 | 316 |
+| `.gitignore` | 1 | 154 |
+| `LICENSE` | 1 | 1086 |
+| `README.md` | 1 | 4993 |
+| `astrbot/cmd_config.json.example` | 1 | 8476 |
+| `astrbot/persona` | 6 | 17992 |
+| `astrbot/plugin-configs` | 6 | 2342 |
+| `astrbot/plugins` | 41 | 310647 |
+| `astrbot/skills.json` | 1 | 269 |
+| `dsha/AGENTS.md` | 1 | 327 |
+| `dsha/dsh-profile` | 4 | 6155 |
+| `dsha/plugins` | 19 | 198046 |
+| `dsha/skills` | 20 | 211030 |
+| `legacy-pc/qq-access-config.json.example` | 1 | 7333 |
+| `napcat/config` | 11 | 15586 |
+| `scripts/apply-config.py` | 1 | 3714 |
+| `scripts/apply-persona.py` | 1 | 2953 |
+| `scripts/check-secrets.sh` | 1 | 1916 |
+| `scripts/deploy-dsh-assets.sh` | 1 | 3075 |
+| `scripts/deploy-phone.sh` | 1 | 4649 |
+| `scripts/push-to-phone.ps1` | 1 | 3567 |
+| `scripts/render_template.py` | 1 | 1109 |
+| `scripts/verify-phone.sh` | 1 | 3473 |
+
+## 逐文件
+
+| 文件 | 字节 | sha256（前 16 位） |
+|---|---:|---|
+| `.env.example` | 1262 | `8fb059f1d592a148` |
+| `.gitattributes` | 316 | `4f70b8d5b5982f54` |
+| `.gitignore` | 154 | `46a9e72a56441a47` |
+| `astrbot/cmd_config.json.example` | 8476 | `8b81abc0e57e27a7` |
+| `astrbot/persona/bot-blocklist.md` | 1644 | `919d16a07f137dd1` |
+| `astrbot/persona/dafeiyu.txt` | 3387 | `3f7c863fbbf765f8` |
+| `astrbot/persona/default.txt` | 5595 | `2b81887b08b18a30` |
+| `astrbot/persona/desktop-qq-persona.txt` | 3023 | `659896163f999288` |
+| `astrbot/persona/memory-digest.md` | 2769 | `aaae702cdef88276` |
+| `astrbot/persona/README.md` | 1574 | `dc8ba5b0672fcbe1` |
+| `astrbot/plugin-configs/astrbot_plugin_android_hands_config.json` | 719 | `cdb8c83a3923a76d` |
+| `astrbot/plugin-configs/astrbot_plugin_coo_memory_config.json` | 118 | `ed32a6d035191dd0` |
+| `astrbot/plugin-configs/astrbot_plugin_feiyu_voice_config.json` | 237 | `5d7927e1a6d2314d` |
+| `astrbot/plugin-configs/astrbot_plugin_libido_config.json` | 85 | `963b8d1ab0fc0eda` |
+| `astrbot/plugin-configs/astrbot_plugin_proactive_config.json` | 764 | `1b9201e3cc20f265` |
+| `astrbot/plugin-configs/astrbot_plugin_qq_voice_call_config.json` | 419 | `826a71b6d39ece07` |
+| `astrbot/plugins/astrbot_plugin_android_hands/_conf_schema.json` | 4024 | `9d3cf68d8babc928` |
+| `astrbot/plugins/astrbot_plugin_android_hands/bili_api.py` | 22414 | `9edc122e549469d2` |
+| `astrbot/plugins/astrbot_plugin_android_hands/hands_roam.py` | 24294 | `fc0efe7aa819f646` |
+| `astrbot/plugins/astrbot_plugin_android_hands/hands_watch.py` | 16727 | `dd1971289e613020` |
+| `astrbot/plugins/astrbot_plugin_android_hands/local_asr.py` | 6092 | `20d5a13b672bc733` |
+| `astrbot/plugins/astrbot_plugin_android_hands/main.py` | 44708 | `705f337bd80e0e0b` |
+| `astrbot/plugins/astrbot_plugin_android_hands/metadata.yaml` | 299 | `3dfe9240a2455631` |
+| `astrbot/plugins/astrbot_plugin_android_hands/README.md` | 5049 | `2b98499494c301bf` |
+| `astrbot/plugins/astrbot_plugin_android_hands/voice_guard.py` | 6121 | `bacc7b8aa66a8fad` |
+| `astrbot/plugins/astrbot_plugin_android_observer/main.py` | 3214 | `3f688545c0bdfd08` |
+| `astrbot/plugins/astrbot_plugin_android_observer/metadata.yaml` | 277 | `f8717b23433eeab3` |
+| `astrbot/plugins/astrbot_plugin_coo_memory/_conf_schema.json` | 730 | `1bc00ddcd49f304d` |
+| `astrbot/plugins/astrbot_plugin_coo_memory/main.py` | 10912 | `7603e9236f2dd862` |
+| `astrbot/plugins/astrbot_plugin_coo_memory/metadata.yaml` | 322 | `b1f5e7f2764e2a3c` |
+| `astrbot/plugins/astrbot_plugin_execrelay/main.py` | 2674 | `9df4768cf34ec544` |
+| `astrbot/plugins/astrbot_plugin_execrelay/metadata.yaml` | 242 | `9c9e81cfdef6b6df` |
+| `astrbot/plugins/astrbot_plugin_feiyu_voice/_conf_schema.json` | 1181 | `66054e060c9f9905` |
+| `astrbot/plugins/astrbot_plugin_feiyu_voice/main.py` | 18957 | `7508d08c9824075e` |
+| `astrbot/plugins/astrbot_plugin_feiyu_voice/metadata.yaml` | 313 | `78643ba01be5148c` |
+| `astrbot/plugins/astrbot_plugin_feiyu_voice/remote_tts.py` | 6131 | `890d38ac9556be7c` |
+| `astrbot/plugins/astrbot_plugin_hb/main.py` | 1006 | `053ef48a7a58bed0` |
+| `astrbot/plugins/astrbot_plugin_hb/metadata.yaml` | 188 | `62288851181518fa` |
+| `astrbot/plugins/astrbot_plugin_libido/_conf_schema.json` | 699 | `cac3dd69842099b7` |
+| `astrbot/plugins/astrbot_plugin_libido/libido_core.py` | 7375 | `3c2e34c36d40c584` |
+| `astrbot/plugins/astrbot_plugin_libido/main.py` | 16413 | `56eeca82c91969b3` |
+| `astrbot/plugins/astrbot_plugin_libido/metadata.yaml` | 305 | `b44bce744d1b5ce2` |
+| `astrbot/plugins/astrbot_plugin_memprobe/main.py` | 3533 | `eccba6c3c01f7114` |
+| `astrbot/plugins/astrbot_plugin_memprobe/metadata.yaml` | 274 | `6ff4e84ab9ae843a` |
+| `astrbot/plugins/astrbot_plugin_persona_manage/main.py` | 19116 | `d35d53b212ccee02` |
+| `astrbot/plugins/astrbot_plugin_persona_manage/metadata.yaml` | 199 | `d4421e8d493e6893` |
+| `astrbot/plugins/astrbot_plugin_persona_manage/README.md` | 4374 | `d28e04d90e5a39ae` |
+| `astrbot/plugins/astrbot_plugin_proactive/_conf_schema.json` | 3363 | `ca8acef6dea023af` |
+| `astrbot/plugins/astrbot_plugin_proactive/main.py` | 30160 | `55be623942076df7` |
+| `astrbot/plugins/astrbot_plugin_proactive/metadata.yaml` | 270 | `487932e86912d7ce` |
+| `astrbot/plugins/astrbot_plugin_proactive/README.md` | 3431 | `88fafd2abf52cd9b` |
+| `astrbot/plugins/astrbot_plugin_proactive/voice_local.py` | 3655 | `3ac630230b81f561` |
+| `astrbot/plugins/astrbot_plugin_probe/main.py` | 1481 | `b94723c94034998f` |
+| `astrbot/plugins/astrbot_plugin_probe/metadata.yaml` | 187 | `a7d7684bdfdaefee` |
+| `astrbot/plugins/astrbot_plugin_qq_voice_call/_conf_schema.json` | 2011 | `10e309f0eb8392c3` |
+| `astrbot/plugins/astrbot_plugin_qq_voice_call/main.py` | 37709 | `2c3873287a8a78d1` |
+| `astrbot/plugins/astrbot_plugin_qq_voice_call/metadata.yaml` | 217 | `0119b93fd08494b3` |
+| `astrbot/skills.json` | 269 | `5afa04d8cd27fc91` |
+| `dsha/AGENTS.md` | 327 | `77b4d846a1984d29` |
+| `dsha/dsh-profile/cordis.patch.yml` | 1916 | `c677629e50d6082b` |
+| `dsha/dsh-profile/cordis.yml` | 223 | `c300dcf2ebc5f020` |
+| `dsha/dsh-profile/package.json` | 2053 | `f75ac2e6fac82f16` |
+| `dsha/dsh-profile/pnpm-workspace.yaml` | 1963 | `1728d8dd6a611bad` |
+| `dsha/plugins/dsh-persona-manage/cordis.patch.yml` | 506 | `b885ea0c7873089b` |
+| `dsha/plugins/dsh-persona-manage/lib/client.js` | 17676 | `25599c737f998002` |
+| `dsha/plugins/dsh-persona-manage/lib/index.js` | 31551 | `24a11aaa699cfd0a` |
+| `dsha/plugins/dsh-persona-manage/LICENSE` | 1064 | `0d658f391fcaf98d` |
+| `dsha/plugins/dsh-persona-manage/package.json` | 1594 | `8ba2f4176e0013dd` |
+| `dsha/plugins/dsh-persona-manage/README.md` | 16049 | `6a482851f004cb3f` |
+| `dsha/plugins/voice-wake/.gitattributes` | 19 | `d60f352d0db1404c` |
+| `dsha/plugins/voice-wake/client.js` | 114595 | `12c8cfa88df03ce8` |
+| `dsha/plugins/voice-wake/cordis.patch.yml` | 63 | `137111a95737aabb` |
+| `dsha/plugins/voice-wake/docs/DETAIL.md` | 3964 | `89de75e0632b29ee` |
+| `dsha/plugins/voice-wake/docs/DETAIL.zh.md` | 3426 | `0824fb7b3b035b89` |
+| `dsha/plugins/voice-wake/icon.svg` | 792 | `9d300b746e5cfde3` |
+| `dsha/plugins/voice-wake/index.js` | 117 | `670e0bf7044c032c` |
+| `dsha/plugins/voice-wake/LICENSE` | 1198 | `26512a6d5e60da7d` |
+| `dsha/plugins/voice-wake/locale/en.json` | 390 | `3ce5aad4478cdf38` |
+| `dsha/plugins/voice-wake/locale/zh.json` | 330 | `785ae7880bfa8e40` |
+| `dsha/plugins/voice-wake/NOTICE` | 927 | `ad1cddf180ee2133` |
+| `dsha/plugins/voice-wake/package.json` | 1145 | `10a4d5dd9505ff5b` |
+| `dsha/plugins/voice-wake/README.md` | 2640 | `f335b44e3441ea97` |
+| `dsha/skills/codex-web-computer-use/SKILL.md` | 3584 | `aedfd3eb979ddbd9` |
+| `dsha/skills/video-watch-plus/.gitattributes` | 613 | `d354630d3c3f562e` |
+| `dsha/skills/video-watch-plus/.gitignore` | 357 | `e5202245f61e585e` |
+| `dsha/skills/video-watch-plus/LICENSE` | 1891 | `4ba903324b3d7f62` |
+| `dsha/skills/video-watch-plus/NOTICE` | 2629 | `ffcd82f30c8d0529` |
+| `dsha/skills/video-watch-plus/patches/vw-windows-fixes.patch` | 2081 | `7dacfc69bb5da72b` |
+| `dsha/skills/video-watch-plus/README.en.md` | 15492 | `ac4a441b718b2828` |
+| `dsha/skills/video-watch-plus/README.md` | 29837 | `8a79a44c528bee30` |
+| `dsha/skills/video-watch-plus/references/verification.md` | 5811 | `f4a639c83b982179` |
+| `dsha/skills/video-watch-plus/references/windows-setup.md` | 9749 | `160a50f19f547201` |
+| `dsha/skills/video-watch-plus/references/with-browser-skill.md` | 5916 | `99fd89b1070d2175` |
+| `dsha/skills/video-watch-plus/scripts/asr_hallucination_check.py` | 7901 | `581645d8dea82e55` |
+| `dsha/skills/video-watch-plus/scripts/audio_probe.py` | 13734 | `c4d9de18d0d62851` |
+| `dsha/skills/video-watch-plus/scripts/build_testclip.py` | 7387 | `ea39064ad28e7ce3` |
+| `dsha/skills/video-watch-plus/scripts/setup-windows.ps1` | 9770 | `5e40f94015e2dfe3` |
+| `dsha/skills/video-watch-plus/SKILL.md` | 11256 | `a2052dd600c73633` |
+| `dsha/skills/video-watch-plus/vendor/LICENSE.video-watch` | 1064 | `08663e4b843799b9` |
+| `dsha/skills/video-watch-plus/vendor/vw.py` | 69473 | `090301a248fb46ef` |
+| `dsha/skills/video-watch-plus/vendor/vwtools.py` | 5692 | `e232a6b61860c1d9` |
+| `dsha/skills/video-watch-plus/verification/record-2026-09-30.md` | 6793 | `6a512e0260e984c6` |
+| `legacy-pc/qq-access-config.json.example` | 7333 | `1aa2fa9a20c9d35c` |
+| `LICENSE` | 1086 | `4f55975e122712e5` |
+| `napcat/config/pc/napcat_3325646322.json.example` | 193 | `854bd7ce550e3880` |
+| `napcat/config/pc/napcat_protocol_3325646322.json.example` | 120 | `cce316df4649e0fb` |
+| `napcat/config/pc/onebot11_3325646322.json.example` | 950 | `a10f5558e689dcc3` |
+| `napcat/config/pc/passkey.json.example` | 3 | `ca3d163bab055381` |
+| `napcat/config/pc/webui.json.example` | 165 | `4af7ebc79f382e64` |
+| `napcat/config/phone/napcat_3325646322.json.example` | 193 | `854bd7ce550e3880` |
+| `napcat/config/phone/napcat_protocol_3325646322.json.example` | 120 | `cce316df4649e0fb` |
+| `napcat/config/phone/onebot11_3325646322.json.example` | 739 | `82fa03204bf360c5` |
+| `napcat/config/phone/onebot11.json.example` | 348 | `f68a06c2d6c28008` |
+| `napcat/config/phone/passkey.json.example` | 3 | `ca3d163bab055381` |
+| `napcat/config/phone/webui.json.example` | 12752 | `1c200381e529d4a2` |
+| `README.md` | 4993 | `246348d1e2bdb6e0` |
+| `scripts/apply-config.py` | 3714 | `99ee5649e5fca5e6` |
+| `scripts/apply-persona.py` | 2953 | `c4b6bdcb9f9aa64f` |
+| `scripts/check-secrets.sh` | 1916 | `3499e928301c4d12` |
+| `scripts/deploy-dsh-assets.sh` | 3075 | `a4c5896407be5837` |
+| `scripts/deploy-phone.sh` | 4649 | `f4c3bf3a18f118f1` |
+| `scripts/push-to-phone.ps1` | 3567 | `a825e519bb8483ee` |
+| `scripts/render_template.py` | 1109 | `d55b44a3f0c3b2eb` |
+| `scripts/verify-phone.sh` | 3473 | `baa1a8b80d60fcd7` |

@@ -1,0 +1,9 @@
+{
+  "enabled": true,
+  "probability": 1,
+  "max_chars": 120,
+  "speed": 1,
+  "voice_dir": "/android-share/tts",
+  "remote_urls": "http://127.0.0.1:9880,http://192.168.1.7:9881,edge:zh-CN-XiaoyiNeural",
+  "voice_whitelist": "641961016"
+}

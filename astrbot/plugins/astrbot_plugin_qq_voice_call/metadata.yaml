@@ -1,0 +1,6 @@
+name: astrbot_plugin_qq_voice_call
+display_name: QQ语音来电
+desc: 接听 QQ 私聊语音来电，用本地 ASR + 大模型 + GPT-SoVITS 实时对话（只接听，不拨号）
+version: v1.3.7
+author: coo
+repo: ""

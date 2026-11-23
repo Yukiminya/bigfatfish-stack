@@ -1,0 +1,59 @@
+# Your patch layer for this dsh profile, applied after every bundle layer:
+# a top-level YAML array of loader patch entries (id-targeted config
+# overrides, disables, and insert lists; `!!js` expressions allowed).
+- id: agent-default-model
+  name: "@deepseek-ai/dsh-agent-default-model"
+  config:
+    provider: deepseek-account
+    model: deepseek-flash
+    reasoningEffort: high
+- id: ui-settings-account
+  name: "@deepseek-ai/dsh-client-ui-settings-account"
+  config:
+    version: 1
+    step: done
+    purpose: both
+    process: detailed
+    completion: completed
+    usage: detailed
+    developerTools: true
+- id: ui-chat
+  name: "@deepseek-ai/dsh-client-ui-chat"
+  config:
+    transcriptView: detailed
+    performanceUsage: detailed
+- id: ui-settings
+  name: "@deepseek-ai/dsh-client-ui-settings"
+  config:
+    enabled: true
+# Plugin market (Discover) starts with no index source, so point it at the
+# community format-1 catalog. Change or remove it in Plugins > Discover.
+- id: plugin-market
+  name: "@deepseek-ai/dsh-plugin-market"
+  config:
+    indexes:
+      - https://cdn.jsdelivr.net/npm/dsh-plugin-catalog/index.json
+# Portable gh / git installed under ~/.local/bin (no admin needed); the plugin
+# rows take absolute paths so no PATH change or restart is required.
+- id: forge-github
+  name: "@deepseek-ai/dsh-experimental-forge-github"
+  config:
+    ghCommand: 'C:\Users\admin\.local\bin\gh\bin\gh.exe'
+    hosts:
+      - github.com
+- id: worktree
+  name: "@deepseek-ai/dsh-experimental-worktree"
+  config:
+    gitCommand: 'C:\Users\admin\.local\bin\git\cmd\git.exe'
+    nodeCommand: 'C:\Users\admin\.dsh\dsh-runtimes\dsh-primary-runtime\dependencies\node\bin\node.exe'
+- id: tool-subagent-codex
+  disabled: true
+- id: qq-access
+  disabled: true
+# >>> dsh-persona-manage (managed) >>>
+- id: system-prompt
+  config:
+    persona: ''
+    personaPrefix: ''
+    personaSuffix: ''
+# <<< dsh-persona-manage <<<

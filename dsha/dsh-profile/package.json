@@ -1,0 +1,57 @@
+{
+  "name": "dsh-profile-desktop",
+  "private": true,
+  "dependencies": {
+    "@deepseek-ai/dsh-experimental-cot-translation-bundle": "0.2.2-rc.5",
+    "@deepseek-ai/dsh-experimental-forge-bundle": "0.2.2-rc.5",
+    "@deepseek-ai/dsh-experimental-plugin-market-bundle": "0.2.2-rc.5",
+    "@deepseek-ai/dsh-experimental-session-search": "0.2.2-rc.5",
+    "@deepseek-ai/dsh-experimental-terminal-bundle": "0.2.2-rc.5",
+    "@deepseek-ai/dsh-subagent-codex": "0.2.2-rc.5",
+    "@liustack/modlens": "^3.27.5",
+    "@local/voice-wake": "link:C:/Users/admin/Documents/deepseek-harness/default-workspace/voice-wake",
+    "@modusensus/dsh-mneme": "0.16.1",
+    "@xsj/dsh-rewind": "github:XSJUSTC/dsh-rewind",
+    "dsh-better-sidebar": "^0.32.1",
+    "dsh-computer-use-ljl454": "^1.50.1",
+    "dsh-connect-doubao": "^0.7.2",
+    "dsh-context": "^0.86.0",
+    "dsh-context-actions": "^0.2.2",
+    "dsh-ego-browser": "^0.14.1",
+    "dsh-heybox": "^0.1.7",
+    "dsh-persona-manage": "github:null119/dsh-persona-manage",
+    "dsh-rewind": "^0.11.12",
+    "dsh-whale-widget": "^0.4.2",
+    "dshmarket": "^1.73.23"
+  },
+  "dsh": {
+    "profile": {
+      "bundles": [
+        "@deepseek-ai/dsh-base",
+        "@deepseek-ai/dsh-web-app",
+        "@deepseek-ai/dsh-subagent-codex",
+        "@deepseek-ai/dsh-experimental-terminal-bundle",
+        "@deepseek-ai/dsh-experimental-session-search",
+        "@deepseek-ai/dsh-experimental-plugin-market-bundle",
+        "@deepseek-ai/dsh-experimental-cot-translation-bundle",
+        "@deepseek-ai/dsh-experimental-forge-bundle",
+        "dsh-computer-use-ljl454",
+        "dsh-connect-doubao",
+        "@deepseek-ai/dsh-experimental-voice-input-bundle",
+        "@local/voice-wake",
+        "dsh-heybox",
+        "@modusensus/dsh-mneme",
+        "dsh-context",
+        "dsh-context-actions",
+        "dshmarket",
+        "@liustack/modlens",
+        "dsh-ego-browser",
+        "dsh-better-sidebar",
+        "dsh-rewind",
+        "dsh-whale-widget",
+        "@xsj/dsh-rewind",
+        "dsh-persona-manage"
+      ]
+    }
+  }
+}

@@ -1,0 +1,7 @@
+name: astrbot_plugin_execrelay
+display_name: 开发期执行中继
+desc: 开发期通过共享目录收发命令，在 AstrBot 的 Python 环境里执行
+version: v1.0.0
+author: dev
+astrbot_version: ">=4.29,<5"
+support_platforms: [aiocqhttp]

@@ -1,0 +1,7 @@
+﻿name: astrbot_plugin_memprobe
+display_name: AstrBot 能力探针
+desc: 把插件钩子/ProviderRequest 字段/数据目录/会话库结构写到 /android-share/memprobe.json
+version: v1.0.1
+author: phone-hands
+astrbot_version: ">=4.29,<5"
+support_platforms: [aiocqhttp]

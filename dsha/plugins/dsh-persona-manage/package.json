@@ -1,0 +1,43 @@
+{
+    "name":  "dsh-persona-manage",
+    "description":  "Persona prompt management for the DSH web GUI (DSHA-adapted): settings page that edits the deployment persona live, with client-half load diagnostics.",
+    "version":  "0.1.6",
+    "type":  "module",
+    "engines":  {
+                    "node":  "^22.19.0 || \u003e=24.0.0"
+                },
+    "main":  "lib/index.js",
+    "exports":  {
+                    ".":  "./lib/index.js",
+                    "./client":  "./lib/client.js",
+                    "./package.json":  "./package.json"
+                },
+    "dsh":  {
+                "bundle":  {
+                               "patch":  "./cordis.patch.yml"
+                           },
+                "client":  {
+                               "inject":  [
+                                              "@deepseek-ai/dsh-client-runtime",
+                                              "@deepseek-ai/dsh-client-ui-settings"
+                                          ],
+                               "platform":  "web"
+                           }
+            },
+    "peerDependencies":  {
+                             "react":  "^18.2.0"
+                         },
+    "files":  [
+                  "lib/**/*.js",
+                  "cordis.patch.yml",
+                  "README.md"
+              ],
+    "keywords":  [
+                     "dsh",
+                     "deepseek-harness",
+                     "persona",
+                     "system-prompt",
+                     "plugin"
+                 ],
+    "license":  "MIT"
+}

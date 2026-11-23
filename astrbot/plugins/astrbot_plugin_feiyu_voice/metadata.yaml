@@ -1,0 +1,8 @@
+﻿name: astrbot_plugin_feiyu_voice
+display_name: 澶ц偉楸肩殑鍡撳瓙
+desc: 把回复念成语音发出来。优先用电脑上的 GPT-SoVITS（adb 隧道 / 局域网 / 云端），失败才退回手机本地 VITS
+version: v1.3.0
+author: Codex
+astrbot_version: ">=4.29,<5"
+support_platforms: [aiocqhttp]
+

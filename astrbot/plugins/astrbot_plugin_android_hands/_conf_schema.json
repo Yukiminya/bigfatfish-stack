@@ -1,0 +1,127 @@
+{
+  "timeout": {
+    "description": "单次调用手机设备桥的超时秒数，范围为 1 至 30。",
+    "type": "int",
+    "default": 30
+  },
+  "max_elements": {
+    "description": "读屏最多返回的节点数，范围为 1 至 60。",
+    "type": "int",
+    "default": 60
+  },
+  "watch_min": {
+    "description": "点进一个视频后至少停留多少秒。",
+    "type": "int",
+    "default": 20
+  },
+  "watch_max": {
+    "description": "点进一个视频后最多停留多少秒。",
+    "type": "int",
+    "default": 45
+  },
+  "auto_min_gap": {
+    "description": "自动看视频：两轮之间最短间隔（分钟）。",
+    "type": "int",
+    "default": 45
+  },
+  "auto_max_gap": {
+    "description": "自动看视频：两轮之间最长间隔（分钟）。",
+    "type": "int",
+    "default": 120
+  },
+  "auto_hour_start": {
+    "description": "自动看视频：允许活动的起始小时（0-23）。",
+    "type": "int",
+    "default": 9
+  },
+  "auto_hour_end": {
+    "description": "自动看视频：允许活动的结束小时（0-23，支持跨零点）。",
+    "type": "int",
+    "default": 23
+  },
+  "auto_daily_limit": {
+    "description": "自动看视频：每天最多发几条感想。",
+    "type": "int",
+    "default": 6
+  },
+  "auto_skip_probability": {
+    "description": "自动看视频：每轮有多大概率什么都不做（0-1）。",
+    "type": "float",
+    "default": 0.3
+  },
+  "roam_apps": {
+    "description": "自动溜达：去哪些应用，逗号分隔，可选 bilibili、xiaoheihe、xiaohongshu。",
+    "type": "string",
+    "default": "bilibili,xiaoheihe,xiaohongshu"
+  },
+  "roam_min_gap": {
+    "description": "自动溜达：两轮之间最短间隔（分钟）。",
+    "type": "int",
+    "default": 25
+  },
+  "roam_max_gap": {
+    "description": "自动溜达：两轮之间最长间隔（分钟）。",
+    "type": "int",
+    "default": 60
+  },
+  "roam_hour_start": {
+    "description": "自动溜达：允许活动的起始小时（0-23）。",
+    "type": "int",
+    "default": 8
+  },
+  "roam_hour_end": {
+    "description": "自动溜达：允许活动的结束小时（1-24，可小于起始小时表示跨零点）。",
+    "type": "int",
+    "default": 24
+  },
+  "roam_daily_limit": {
+    "description": "自动溜达：每天最多逛几条。",
+    "type": "int",
+    "default": 8
+  },
+  "roam_comment_probability": {
+    "description": "自动溜达：每条有多大概率留评论（0-100）。",
+    "type": "int",
+    "default": 30
+  },
+  "roam_forward_probability": {
+    "description": "自动溜达：模型觉得有趣时，有多大概率真的转发给主人（0-100）。",
+    "type": "int",
+    "default": 80
+  },
+  "roam_skip_probability": {
+    "description": "自动溜达：每轮有多大概率什么都不做（0-100）。",
+    "type": "int",
+    "default": 15
+  },
+  "voice_asr_enabled": {
+    "description": "语音消息：是否调用语音转文字接口把语音变成文字（关掉就让模型说听不了语音）。",
+    "type": "bool",
+    "default": false
+  },
+  "voice_asr_local": {
+    "description": "语音消息：用手机本地模型识别（完全离线、不花钱），优先于下面的云接口。",
+    "type": "bool",
+    "default": true
+  },
+  "voice_asr_dir": {
+    "description": "语音消息：本地模型目录，里面要有 model.int8.onnx 和 tokens.txt。",
+    "type": "string",
+    "default": "/android-share/asr"
+  },
+  "voice_asr_base": {
+    "description": "语音消息：转写接口的 base，OpenAI 兼容，例如 https://api.siliconflow.cn/v1。",
+    "type": "string",
+    "default": "https://api.siliconflow.cn/v1"
+  },
+  "voice_asr_key": {
+    "description": "语音消息：转写接口的 API Key（留空则只用兜底提示）。",
+    "type": "string",
+    "default": ""
+  },
+  "voice_asr_model": {
+    "description": "语音消息：转写模型名，例如 FunAudioLLM/SenseVoiceSmall。",
+    "type": "string",
+    "default": "FunAudioLLM/SenseVoiceSmall"
+  }
+}

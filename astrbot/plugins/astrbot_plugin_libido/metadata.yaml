@@ -1,0 +1,7 @@
+name: astrbot_plugin_libido
+display_name: 大肥鱼的状态
+desc: 一个会自己走的 0-100 数值，五档语气（平静/有点想/难耐/快撑不住/发情），每月 18-20 日发情期，附浏览器面板
+version: v1.0.0
+author: Codex
+astrbot_version: ">=4.29,<5"
+support_platforms: [aiocqhttp]

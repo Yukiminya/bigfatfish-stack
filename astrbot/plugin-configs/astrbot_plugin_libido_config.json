@@ -1,0 +1,6 @@
+{
+  "enabled": true,
+  "initial": 20,
+  "tick_seconds": 300,
+  "panel_port": 41888
+}

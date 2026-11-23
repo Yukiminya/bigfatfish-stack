@@ -1,0 +1,32 @@
+{
+  "enabled": true,
+  "min_gap_min": 40,
+  "max_gap_min": 150,
+  "quiet_start": "02:00",
+  "quiet_end": "08:30",
+  "daily_cap": 12,
+  "idle_gap_min": 25,
+  "max_chars": 60,
+  "use_persona": true,
+  "target_umo": "napcat:FriendMessage:641961016",
+  "utc_offset_hours": 8,
+  "topics": [
+    "今天在忙什么",
+    "游戏和视频",
+    "你的身体累不累",
+    "心情",
+    "天气",
+    "想主人",
+    "你自己的一天",
+    "家里和吃的",
+    "以前聊过的事",
+    "临时冒出来的怪念头"
+  ],
+  "use_libido": true,
+  "with_voice": true,
+  "voice_dir": "/android-share/tts",
+  "voice_name": "",
+  "voice_speed": 1,
+  "voice_max_chars": 60,
+  "remote_tts_urls": "http://127.0.0.1:9880,http://192.168.1.7:9881,edge:zh-CN-XiaoyiNeural"
+}

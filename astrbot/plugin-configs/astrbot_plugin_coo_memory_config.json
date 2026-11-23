@@ -1,0 +1,7 @@
+{
+  "enable": true,
+  "record": true,
+  "inject": true,
+  "max_inject_chars": 2500,
+  "share_dir": "/android-share"
+}

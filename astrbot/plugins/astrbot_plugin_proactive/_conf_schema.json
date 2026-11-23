@@ -1,0 +1,108 @@
+{
+    "enabled": {
+        "description": "插件配置总开关",
+        "type": "bool",
+        "default": true
+    },
+    "min_gap_min": {
+        "description": "两次定时主动消息的最短间隔，单位为分钟",
+        "type": "int",
+        "default": 40
+    },
+    "max_gap_min": {
+        "description": "随机抽取的最长等待间隔，单位为分钟，应大于或等于最短间隔",
+        "type": "int",
+        "default": 150
+    },
+    "quiet_start": {
+        "description": "本地静默开始时间，使用 HH:MM 格式",
+        "type": "string",
+        "default": "02:00"
+    },
+    "quiet_end": {
+        "description": "本地静默结束时间，使用 HH:MM 格式",
+        "type": "string",
+        "default": "08:30"
+    },
+    "daily_cap": {
+        "description": "本地自然日内定时发送的条数上限，设为 0 时暂停定时发送",
+        "type": "int",
+        "default": 12
+    },
+    "idle_gap_min": {
+        "description": "主人在私聊说话后暂停定时发送的分钟数",
+        "type": "int",
+        "default": 25
+    },
+    "max_chars": {
+        "description": "每条主动消息的最大字符数，包含标点",
+        "type": "int",
+        "default": 60
+    },
+    "use_persona": {
+        "description": "生成时是否读取当前默认人设全文",
+        "type": "bool",
+        "default": true
+    },
+    "target_umo": {
+        "description": "主动消息发往的 NapCat 私聊会话标识",
+        "type": "string",
+        "default": "napcat:FriendMessage:641961016"
+    },
+    "utc_offset_hours": {
+        "description": "本地时区相对 UTC 的偏移小时数，默认 8 表示北京时间",
+        "type": "int",
+        "default": 8
+    },
+    "topics": {
+        "description": "主动消息备选话题列表，按时段加权并避开最近话题",
+        "type": "list",
+        "default": [
+            "今天在忙什么",
+            "游戏和视频",
+            "你的身体累不累",
+            "心情",
+            "天气",
+            "想主人",
+            "你自己的一天",
+            "家里和吃的",
+            "以前聊过的事",
+            "临时冒出来的怪念头"
+        ]
+    },
+    "use_libido": {
+        "description": "生成主动消息时读取性欲状态及说话建议",
+        "type": "bool",
+        "default": true
+    },
+    "with_voice": {
+        "description": "给符合长度要求的主动消息附加语音条",
+        "type": "bool",
+        "default": true
+    },
+    "voice_dir": {
+        "description": "本地语音模型的根目录",
+        "type": "string",
+        "default": "/android-share/tts"
+    },
+    "voice_name": {
+        "description": "本地模型子目录名，留空时按名称排序选择第一个含 ONNX 的子目录",
+        "type": "string",
+        "default": ""
+    },
+    "voice_speed": {
+        "description": "本地合成语速，1.0 为原速",
+        "type": "float",
+        "default": 1.0
+    },
+    "voice_max_chars": {
+        "description": "允许附加语音的正文最大字符数",
+        "type": "int",
+        "default": 60
+    },
+    "remote_tts_urls": {
+        "description": "可选的远程语音地址，使用英文逗号分隔，留空时只使用本地模型",
+        "type": "string",
+        "default": ""
+    }
+}

@@ -1,0 +1,7 @@
+﻿name: astrbot_plugin_hb
+display_name: heartbeat test
+desc: writes android-share/hb.txt on load
+version: v1.0.0
+author: lead
+astrbot_version: ">=4.29,<5"
+support_platforms: [aiocqhttp]

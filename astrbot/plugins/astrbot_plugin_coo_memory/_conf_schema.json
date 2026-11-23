@@ -1,0 +1,27 @@
+{
+  "enable": {
+    "type": "bool",
+    "description": "总开关：关掉后既不记录也不注入",
+    "default": true
+  },
+  "record": {
+    "type": "bool",
+    "description": "把 QQ 对话记进 qq-turns.jsonl，等电脑上的同步器来取",
+    "default": true
+  },
+  "inject": {
+    "type": "bool",
+    "description": "把电脑桌宠 Coo 的记忆拼进系统提示词",
+    "default": true
+  },
+  "max_inject_chars": {
+    "type": "int",
+    "description": "注入的记忆最多多少字",
+    "default": 2500
+  },
+  "share_dir": {
+    "type": "string",
+    "description": "和电脑交换文件的目录（adb 侧是 /sdcard/Android/data/io.astrbot.android/files/shared）",
+    "default": "/android-share"
+  }
+}

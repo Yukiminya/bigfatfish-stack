@@ -1,0 +1,15 @@
+{
+  "ws_host": "127.0.0.1",
+  "ws_port": 6198,
+  "ws_token": "${QQVOICE_WS_TOKEN}",
+  "ws_path": "/qq-voice-call",
+  "voice_whitelist": "",
+  "voice_uid_whitelist": "",
+  "auto_accept": true,
+  "tts_url": "http://127.0.0.1:9880",
+  "asr_model": "/android-share/asr/model.int8.onnx",
+  "asr_tokens": "/android-share/asr/tokens.txt",
+  "speaker_monitor": "qqspk.monitor",
+  "mic_sink": "qqmic",
+  "max_reply_chars": 60
+}

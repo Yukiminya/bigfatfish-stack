@@ -1,0 +1,7 @@
+name: astrbot_plugin_coo_memory
+display_name: 和电脑上的桌宠共享记忆
+desc: 把 QQ 对话写进共享队列交给电脑上的桌宠 Coo，并把 Coo 的记忆注进系统提示词（一条记忆，两边都记着）
+version: v1.0.4
+author: phone-hands
+astrbot_version: ">=4.29,<5"
+support_platforms: [aiocqhttp]

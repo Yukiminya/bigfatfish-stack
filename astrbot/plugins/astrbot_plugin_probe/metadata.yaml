@@ -1,0 +1,7 @@
+﻿name: astrbot_plugin_probe
+display_name: probe
+desc: one-shot http probe from phone to PC TTS
+version: v1.0.0
+author: lead
+astrbot_version: ">=4.29,<5"
+support_platforms: [aiocqhttp]

@@ -1,0 +1,6 @@
+name: astrbot_plugin_proactive
+display_name: 不定时主动发消息
+desc: 雪糕鱼按随机间隔主动发 QQ 私聊，带话题轮换、性欲状态联动与语音条，支持静默时段、每日上限和管理员开关。
+version: v1.1.1
+author: xuegaoyu
+repo: ""

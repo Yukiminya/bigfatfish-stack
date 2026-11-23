@@ -1,0 +1,42 @@
+{
+  "network": {
+    "httpServers": [
+      {
+        "name": "dsh-qq-api",
+        "enable": true,
+        "host": "127.0.0.1",
+        "port": 3000,
+        "token": "${NAPCAT_TOKEN}",
+        "enableCors": false,
+        "enableWebsocket": false,
+        "messagePostFormat": "array",
+        "debug": false
+      }
+    ],
+    "httpSseServers": [],
+    "httpClients": [
+      {
+        "name": "dsh-qq-events",
+        "enable": true,
+        "url": "http://127.0.0.1:5701/onebot",
+        "token": "${NAPCAT_TOKEN}",
+        "messagePostFormat": "array",
+        "reportSelfMessage": false,
+        "debug": false
+      }
+    ],
+    "websocketServers": [],
+    "websocketClients": [],
+    "plugins": []
+  },
+  "musicSignUrl": "",
+  "enableLocalFile2Url": false,
+  "parseMultMsg": false,
+  "imageDownloadProxy": "",
+  "timeout": {
+    "baseTimeout": 10000,
+    "uploadSpeedKBps": 256,
+    "downloadSpeedKBps": 256,
+    "maxTimeout": 1800000
+  }
+}

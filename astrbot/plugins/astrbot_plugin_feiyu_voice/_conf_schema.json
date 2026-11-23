@@ -1,0 +1,37 @@
+{
+  "enabled": {
+    "description": "是否把回复念成语音（关掉就只剩文字）。",
+    "type": "bool",
+    "default": true
+  },
+  "probability": {
+    "description": "每条回复有多大概率附带语音（0-1）。",
+    "type": "float",
+    "default": 0.35
+  },
+  "max_chars": {
+    "description": "回复文字超过这个字数就不念（0 表示不限）。",
+    "type": "int",
+    "default": 80
+  },
+  "speed": {
+    "description": "语速，1.0 正常，1.2 快一点（只影响手机本地 VITS）。",
+    "type": "float",
+    "default": 1.0
+  },
+  "voice_dir": {
+    "description": "手机本地兜底 TTS 模型目录（电脑连不上时才用）。",
+    "type": "string",
+    "default": "/android-share/tts"
+  },
+  "remote_urls": {
+    "description": "电脑上的语音接口，逗号分隔，按顺序尝试：先 adb 隧道，再局域网，最后云端。",
+    "type": "string",
+    "default": "http://127.0.0.1:9880,http://192.168.1.2:9881"
+  },
+  "voice_whitelist": {
+    "description": "白名单：只有这些 QQ 号能收到语音条（逗号分隔；留空表示谁都给）。",
+    "type": "string",
+    "default": "641961016"
+  }
+}

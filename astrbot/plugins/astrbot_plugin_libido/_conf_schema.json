@@ -1,0 +1,22 @@
+{
+  "enabled": {
+    "description": "是否把「当前状态」这段提示词接进对话（关掉就只是个数值）。",
+    "type": "bool",
+    "default": true
+  },
+  "initial": {
+    "description": "初始值，「解决」和睡醒结算都以它为基准（0-100）。",
+    "type": "int",
+    "default": 20
+  },
+  "tick_seconds": {
+    "description": "后台多久更新一次（秒）。数值按真实时间自行推进，改这个只影响响应速度。",
+    "type": "int",
+    "default": 300
+  },
+  "panel_port": {
+    "description": "面板端口，手机浏览器访问 http://127.0.0.1:该端口/ 即可，不需要登录后台。",
+    "type": "int",
+    "default": 41888
+  }
+}

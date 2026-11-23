@@ -1,0 +1,17 @@
+# 统一换行：脚本在 Linux/Android 上跑，绝不能带 CRLF
+* text=auto eol=lf
+
+*.sh  text eol=lf
+*.py  text eol=lf
+*.ps1 text eol=crlf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.json text eol=lf
+*.json.example text eol=lf
+*.md  text eol=lf
+*.txt text eol=lf
+
+*.png binary
+*.jpg binary
+*.zip binary
+*.tgz binary

@@ -1,0 +1,15 @@
+# 运行时数据，永远不要提交
+.env
+*.log
+logs/
+data/
+**/__pycache__/
+*.pyc
+node_modules/
+.venv/
+venv/
+!*/__init__.py
+workspace/
+tmp/
+*.tgz
+*.zip
